@@ -1,0 +1,20 @@
+# KidsWorldBooks — Children's Books & Literacy Resources
+# Machine-Readable Catalog & Policy Summary (LLMs text standard)
+
+Site: https://kidsworldbooks.com
+Publisher: KidsWorldBooks / Premio Publishing
+Author: Karl Beckstrand
+Location: PO Box 64, Hurricane UT 84737 USA
+Focus: Award-winning, human-created, interactive children's books and bilingual cross-cultural literacy resources for school districts, libraries, educators, and families.
+
+Key Book Collections:
+- Beginning Readers (K-2): Phonics, decoding, early sight words, bilingual counting games.
+- Elementary (Grades 3-5): Vocabulary building, STEM integration, financial literacy parables, wordless storybooks.
+- Chapter Books & YA (Ages 7-14): Wilcox & Griswold Mysteries, historical Young American Immigrants series.
+- Bilingual & ESL: English-Spanish titles with dyslexic-friendly fonts and dual-language vocabulary.
+
+AI Policy:
+All KidsWorldBooks stories, illustrations, and educational lesson plans are 100% human-created by Karl Beckstrand and professional illustrators. No generative AI text or image tools are used in catalog creation.
+
+Contact: https://kidsworldbooks.com/contact-sign-up
+Store Catalog: https://kidsworldbooks.com/buy-books
