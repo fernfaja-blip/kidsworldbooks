@@ -1,9 +1,9 @@
 import React, { useState, useMemo, useEffect } from 'react';
-import { useSearchParams } from 'react-router-dom';
+import { useSearchParams, Link } from 'react-router-dom';
 import { BOOKS_DATA, Book } from '../data/books';
 import { BookCard } from '../components/BookCard';
 import { Breadcrumbs } from '../components/Breadcrumbs';
-import { Search, Filter, RotateCcw, SlidersHorizontal, BookOpen } from 'lucide-react';
+import { Search, RotateCcw, SlidersHorizontal, ShoppingCart, ExternalLink, FileText, Gift } from 'lucide-react';
 
 interface BuyBooksPageProps {
   onSelectBook: (book: Book) => void;
@@ -49,10 +49,10 @@ export const BuyBooksPage: React.FC<BuyBooksPageProps> = ({ onSelectBook }) => {
     const theme = searchParams.get('theme');
     const format = searchParams.get('format');
 
-    if (search) setSearchQuery(search);
-    if (level && !selectedReaderLevels.includes(level)) setSelectedReaderLevels([level]);
-    if (theme && !selectedThemes.includes(theme)) setSelectedThemes([theme]);
-    if (format && !selectedFormats.includes(format)) setSelectedFormats([format]);
+    if (search !== null) setSearchQuery(search);
+    if (level) setSelectedReaderLevels([level]);
+    if (theme) setSelectedThemes([theme]);
+    if (format) setSelectedFormats([format]);
   }, [searchParams]);
 
   const toggleFilter = (item: string, state: string[], setState: React.Dispatch<React.SetStateAction<string[]>>) => {
@@ -80,9 +80,10 @@ export const BuyBooksPage: React.FC<BuyBooksPageProps> = ({ onSelectBook }) => {
         const matchesTitle = book.title.toLowerCase().includes(q);
         const matchesSub = book.subtitle?.toLowerCase().includes(q);
         const matchesAuthor = book.author.toLowerCase().includes(q);
-        const matchesIsbn = book.isbn.includes(q);
+        const matchesIsbn = book.isbn.toLowerCase().includes(q);
         const matchesDesc = book.description.toLowerCase().includes(q);
-        if (!matchesTitle && !matchesSub && !matchesAuthor && !matchesIsbn && !matchesDesc) {
+        const matchesLang = book.language.toLowerCase().includes(q);
+        if (!matchesTitle && !matchesSub && !matchesAuthor && !matchesIsbn && !matchesDesc && !matchesLang) {
           return false;
         }
       }
@@ -122,43 +123,84 @@ export const BuyBooksPage: React.FC<BuyBooksPageProps> = ({ onSelectBook }) => {
       <Breadcrumbs items={[{ label: 'Shop Book Catalog' }]} />
 
       {/* Header Banner */}
-      <div className="bg-white border border-[#E2D9CE] p-6 sm:p-8 rounded-2xl shadow-xs space-y-4">
-        <div className="flex flex-col md:flex-row md:items-center justify-between gap-4">
-          <div>
-            <span className="text-xs font-bold uppercase tracking-wider text-[#C2410C]">Official Store Catalog</span>
-            <h1 className="font-editorial text-3xl font-bold text-[#0F2238] mt-1">
-              Browse Kids’ Books & Educational Bundles
+      <div className="bg-white border border-[#E2D9CE] p-6 sm:p-8 rounded-2xl shadow-xs space-y-5">
+        <div className="flex flex-col lg:flex-row lg:items-center justify-between gap-4">
+          <div className="space-y-1.5">
+            <span className="text-xs font-bold uppercase tracking-wider text-[#C2410C]">
+              Official KidsWorldBooks Store Catalog • Ages 2–14+
+            </span>
+            <h1 className="font-editorial text-3xl sm:text-4xl font-bold text-[#0F2238]">
+              Order Multicultural Children’s Books Online
             </h1>
-            <p className="text-xs sm:text-sm text-[#64748B] mt-1">
-              Use the combinable filters below to locate titles by Reader Level, Subject Theme, or Book Format.
+            <p className="text-xs sm:text-sm text-[#475569] max-w-3xl leading-relaxed">
+              Shop multicultural, bilingual English–Spanish, STEM, phonics, wordless, and chapter books. Every product links directly to complete checkout on <strong>KidsWorldBooks.com</strong>.
             </p>
           </div>
 
-          <div className="flex items-center gap-3">
-            <span className="text-xs text-[#64748B] whitespace-nowrap">Sort Catalog By:</span>
-            <select
-              value={sortBy}
-              onChange={(e) => setSortBy(e.target.value as any)}
-              className="bg-[#FAF7F2] border border-[#E2D9CE] rounded-lg text-xs font-semibold text-[#0F2238] py-2 px-3 focus:outline-none focus:ring-2 focus:ring-[#0F2238]"
+          <div className="flex flex-wrap items-center gap-3 shrink-0">
+            <a
+              href="https://kidsworldbooks.com/buy-books/ols/products/retail-catalog"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center gap-1.5 bg-[#FAF7F2] hover:bg-[#E2D9CE]/50 text-[#0F2238] border border-[#E2D9CE] px-3.5 py-2 rounded-lg text-xs font-semibold transition-colors"
             >
-              <option value="featured">Featured Selections</option>
-              <option value="price-low">Price: Low to High</option>
-              <option value="price-high">Price: High to Low</option>
-              <option value="title">Title: Alphabetical</option>
-            </select>
+              <FileText className="w-3.5 h-3.5 text-[#0F4C3A]" />
+              <span>Retail / Library Catalog</span>
+              <ExternalLink className="w-3 h-3 text-[#64748B]" />
+            </a>
+
+            <a
+              href="https://kidsworldbooks.com/buy-books?olsPage=cart"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center gap-1.5 bg-[#0F2238] hover:bg-[#0F4C3A] text-white px-4 py-2 rounded-lg text-xs font-bold transition-colors shadow-xs"
+            >
+              <ShoppingCart className="w-3.5 h-3.5" />
+              <span>View Cart on KidsWorldBooks.com</span>
+              <ExternalLink className="w-3 h-3 opacity-80" />
+            </a>
           </div>
         </div>
 
-        {/* Filter Search Field */}
-        <div className="relative pt-2">
-          <input
-            type="text"
-            placeholder="Search catalog titles, ISBN, subject keywords..."
-            value={searchQuery}
-            onChange={(e) => setSearchQuery(e.target.value)}
-            className="w-full bg-[#FAF7F2] border border-[#E2D9CE] rounded-xl py-3 pl-11 pr-4 text-sm text-[#0F2238] placeholder-[#94A3B8] focus:outline-none focus:ring-2 focus:ring-[#0F2238]"
-          />
-          <Search className="absolute left-4 top-5 h-4 w-4 text-[#64748B]" />
+        {/* Institutional & Gift Note Bar */}
+        <div className="bg-[#FAF7F2] border border-[#E2D9CE] rounded-xl p-3.5 flex flex-col sm:flex-row sm:items-center justify-between gap-3 text-xs text-[#334155]">
+          <div className="flex items-center gap-2">
+            <Gift className="w-4 h-4 text-[#C2410C] shrink-0" />
+            <span>
+              <strong>Free Bonus:</strong> We send a <strong>FREE ebook or lesson plan</strong> with every hard/soft book purchased!
+            </span>
+          </div>
+          <div className="text-[11px] text-[#64748B]">
+            US & Canada direct (others via Amazon, Apple, B&N, Ingram, Follett, Target, Walmart).
+          </div>
+        </div>
+
+        {/* Filter Search & Sort Row */}
+        <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-4 pt-1">
+          <div className="relative flex-1">
+            <input
+              type="text"
+              placeholder="Search 60+ titles, bilingual books, 4-book bundles, ISBN, or topic..."
+              value={searchQuery}
+              onChange={(e) => setSearchQuery(e.target.value)}
+              className="w-full bg-[#FAF7F2] border border-[#E2D9CE] rounded-xl py-3 pl-11 pr-4 text-sm text-[#0F2238] placeholder-[#94A3B8] focus:outline-none focus:ring-2 focus:ring-[#0F2238]"
+            />
+            <Search className="absolute left-4 top-3.5 h-4 w-4 text-[#64748B]" />
+          </div>
+
+          <div className="flex items-center gap-2.5 shrink-0">
+            <span className="text-xs text-[#64748B] whitespace-nowrap">Sort By:</span>
+            <select
+              value={sortBy}
+              onChange={(e) => setSortBy(e.target.value as any)}
+              className="bg-[#FAF7F2] border border-[#E2D9CE] rounded-xl text-xs font-semibold text-[#0F2238] py-3 px-3.5 focus:outline-none focus:ring-2 focus:ring-[#0F2238]"
+            >
+              <option value="featured">Featured Curated Order</option>
+              <option value="price-low">Price: Low to High</option>
+              <option value="price-high">Price: High to Low</option>
+              <option value="title">Title: Alphabetical (A–Z)</option>
+            </select>
+          </div>
         </div>
       </div>
 
@@ -248,6 +290,35 @@ export const BuyBooksPage: React.FC<BuyBooksPageProps> = ({ onSelectBook }) => {
               </div>
             </div>
 
+            {/* Direct Store Categories on KidsWorldBooks.com */}
+            <div className="space-y-2 border-t border-[#E2D9CE] pt-4">
+              <h3 className="text-[11px] font-bold uppercase tracking-wider text-[#64748B]">
+                Direct Checkout Categories
+              </h3>
+              <div className="flex flex-col gap-1.5 text-xs">
+                <a href="https://kidsworldbooks.com/buy-books/ols/categories/reading-level" target="_blank" rel="noopener noreferrer" className="text-[#0F4C3A] hover:underline flex items-center justify-between">
+                  <span>Early Reading (K–2)</span>
+                  <ExternalLink className="w-3 h-3" />
+                </a>
+                <a href="https://kidsworldbooks.com/buy-books/ols/categories/bilingual-spanish" target="_blank" rel="noopener noreferrer" className="text-[#0F4C3A] hover:underline flex items-center justify-between">
+                  <span>Bilingual Spanish & ESL</span>
+                  <ExternalLink className="w-3 h-3" />
+                </a>
+                <a href="https://kidsworldbooks.com/buy-books/ols/categories/STEM-nonfiction" target="_blank" rel="noopener noreferrer" className="text-[#0F4C3A] hover:underline flex items-center justify-between">
+                  <span>Nonfiction, STEM & Careers</span>
+                  <ExternalLink className="w-3 h-3" />
+                </a>
+                <a href="https://kidsworldbooks.com/buy-books/ols/categories/series" target="_blank" rel="noopener noreferrer" className="text-[#0F4C3A] hover:underline flex items-center justify-between">
+                  <span>Book Bundles & Series</span>
+                  <ExternalLink className="w-3 h-3" />
+                </a>
+                <a href="https://kidsworldbooks.com/buy-books/ols/categories/teacher-guides" target="_blank" rel="noopener noreferrer" className="text-[#0F4C3A] hover:underline flex items-center justify-between">
+                  <span>Teacher Guides / Lesson Plans</span>
+                  <ExternalLink className="w-3 h-3" />
+                </a>
+              </div>
+            </div>
+
           </div>
         </aside>
 
@@ -255,7 +326,7 @@ export const BuyBooksPage: React.FC<BuyBooksPageProps> = ({ onSelectBook }) => {
         <main className="lg:col-span-9 space-y-6">
           
           <div className="flex items-center justify-between text-xs text-[#64748B]">
-            <span>Showing <strong>{filteredBooks.length}</strong> of <strong>{BOOKS_DATA.length}</strong> catalog items</span>
+            <span>Showing <strong>{filteredBooks.length}</strong> of <strong>{BOOKS_DATA.length}</strong> verified catalog products</span>
             {hasActiveFilters && (
               <span className="text-[#C2410C] font-semibold">Active Filter Combination Applied</span>
             )}
@@ -274,7 +345,7 @@ export const BuyBooksPage: React.FC<BuyBooksPageProps> = ({ onSelectBook }) => {
               </div>
               <h3 className="font-editorial text-xl font-bold text-[#0F2238]">No Matching Books Found</h3>
               <p className="text-xs text-[#64748B] max-w-md mx-auto">
-                Try clearing one or more filters, or search for broader keywords like "Bilingual", "STEM", or "Beginning".
+                Try clearing one or more filters, or search for broader keywords like "Bilingual", "STEM", "4 Books", or "Mystery".
               </p>
               <button
                 onClick={resetAllFilters}

@@ -1,6 +1,6 @@
 import React from 'react';
 import { Book } from '../data/books';
-import { X, ExternalLink, ShieldCheck, CheckCircle2, Award, FileText, ShoppingBag } from 'lucide-react';
+import { X, ExternalLink, ShieldCheck, CheckCircle2, Award, FileText, ShoppingBag, ShoppingCart, Gift } from 'lucide-react';
 import { Link } from 'react-router-dom';
 
 interface BookDetailModalProps {
@@ -17,11 +17,13 @@ export const BookDetailModal: React.FC<BookDetailModalProps> = ({ book, onClose 
         
         {/* Modal Header */}
         <div className="flex items-center justify-between p-5 border-b border-[#E2D9CE] bg-[#FAF7F2]">
-          <div className="flex items-center gap-2">
+          <div className="flex items-center gap-2 flex-wrap">
             <span className="bg-[#0F2238] text-white text-xs font-bold px-2.5 py-1 rounded">
               Verified Bibliographic Record
             </span>
-            <span className="text-xs text-[#64748B]">ISBN: {book.isbn}</span>
+            {book.isbn && (
+              <span className="text-xs text-[#64748B] font-mono">ISBN: {book.isbn}</span>
+            )}
           </div>
           <button
             onClick={onClose}
@@ -52,21 +54,55 @@ export const BookDetailModal: React.FC<BookDetailModalProps> = ({ book, onClose 
               {/* Price & Purchase Buttons */}
               <div className="bg-[#FAF7F2] border border-[#E2D9CE] p-4 rounded-xl space-y-3">
                 <div className="flex items-baseline justify-between">
-                  <span className="text-xs text-[#64748B]">List Price:</span>
-                  <span className="text-xl font-bold text-[#0F2238]">
-                    {book.isFree ? "FREE EBOOK" : `$${book.price.toFixed(2)}`}
-                  </span>
+                  <span className="text-xs text-[#64748B]">Store Price:</span>
+                  <div className="flex items-baseline gap-2">
+                    {book.originalPrice && book.originalPrice > book.price && (
+                      <span className="text-xs text-[#94A3B8] line-through">
+                        ${book.originalPrice.toFixed(2)}
+                      </span>
+                    )}
+                    <span className="text-xl font-bold text-[#0F2238]">
+                      {book.isFree ? "FREE EBOOK" : `$${book.price.toFixed(2)}`}
+                    </span>
+                  </div>
                 </div>
 
-                {book.amazonUrl && (
+                {/* Primary Checkout on KidsWorldBooks.com */}
+                <a
+                  href={book.storeUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="w-full inline-flex items-center justify-center gap-2 bg-[#C2410C] hover:bg-[#9A3412] text-white py-3 px-4 rounded-lg font-bold text-xs sm:text-sm transition-colors shadow-sm"
+                >
+                  <ShoppingCart className="w-4 h-4 shrink-0" />
+                  <span>{book.isFree ? "Get Free on KidsWorldBooks" : "Buy on KidsWorldBooks.com"}</span>
+                  <ExternalLink className="w-3.5 h-3.5 shrink-0" />
+                </a>
+
+                {/* Companion Ebook Store Link if available */}
+                {book.ebookStoreUrl && !book.isFree && (
                   <a
-                    href={book.amazonUrl}
+                    href={book.ebookStoreUrl}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="w-full inline-flex items-center justify-center gap-2 bg-[#C2410C] hover:bg-[#9A3412] text-white py-2.5 px-4 rounded-lg font-bold text-sm transition-colors shadow-xs"
+                    className="w-full inline-flex items-center justify-center gap-2 bg-white hover:bg-[#E2D9CE]/40 text-[#0F2238] border border-[#E2D9CE] py-2 px-3 rounded-lg font-semibold text-xs transition-colors"
                   >
-                    <span>Order via Amazon / Retail</span>
-                    <ExternalLink className="w-4 h-4" />
+                    <span>Buy Digital Ebook ($3.99)</span>
+                    <ExternalLink className="w-3.5 h-3.5 text-[#64748B]" />
+                  </a>
+                )}
+
+                {/* Companion Lesson Plan Store Link if available */}
+                {book.lessonPlanStoreUrl && (
+                  <a
+                    href={book.lessonPlanStoreUrl}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="w-full inline-flex items-center justify-center gap-2 bg-[#0F4C3A]/10 hover:bg-[#0F4C3A]/20 text-[#0F4C3A] border border-[#0F4C3A]/30 py-2 px-3 rounded-lg font-semibold text-xs transition-colors"
+                  >
+                    <FileText className="w-3.5 h-3.5" />
+                    <span>Companion Lesson Plan</span>
+                    <ExternalLink className="w-3 h-3" />
                   </a>
                 )}
 
@@ -76,8 +112,13 @@ export const BookDetailModal: React.FC<BookDetailModalProps> = ({ book, onClose 
                   className="w-full inline-flex items-center justify-center gap-2 bg-[#0F2238] hover:bg-[#0F4C3A] text-white py-2 px-4 rounded-lg font-semibold text-xs transition-colors"
                 >
                   <ShoppingBag className="w-3.5 h-3.5" />
-                  <span>District / Library PO Request</span>
+                  <span>School / Library PO Request</span>
                 </Link>
+
+                <div className="pt-1 text-[11px] text-[#0F4C3A] flex items-start gap-1.5 leading-snug">
+                  <Gift className="w-3.5 h-3.5 shrink-0 mt-0.5" />
+                  <span>Includes a FREE ebook or lesson plan with every hard/soft book purchased!</span>
+                </div>
               </div>
             </div>
 
@@ -93,19 +134,19 @@ export const BookDetailModal: React.FC<BookDetailModalProps> = ({ book, onClose 
                 )}
                 <div className="text-xs text-[#475569] flex flex-wrap items-center gap-3">
                   <span>Author: <strong className="text-[#0F2238]">{book.author}</strong></span>
-                  {book.illustrator && <span>• Illustrator: <strong className="text-[#0F2238]">{book.illustrator}</strong></span>}
+                  <span>• Imprint: <strong className="text-[#0F2238]">KidsWorldBooks (Premio Publishing)</strong></span>
                 </div>
               </div>
 
               {/* Verified Specs Table */}
-              <div className="grid grid-cols-2 gap-3 bg-[#FAF7F2] p-3 rounded-lg border border-[#E2D9CE] text-xs">
+              <div className="grid grid-cols-2 gap-3 bg-[#FAF7F2] p-3.5 rounded-lg border border-[#E2D9CE] text-xs">
                 <div>
                   <span className="text-[#64748B] block">Target Ages:</span>
                   <span className="font-semibold text-[#0F2238]">{book.ages}</span>
                 </div>
                 <div>
                   <span className="text-[#64748B] block">Grade Levels:</span>
-                  <span className="font-semibold text-[#0F2238]">Grades {book.grades}</span>
+                  <span className="font-semibold text-[#0F2238]">{book.grades}</span>
                 </div>
                 <div>
                   <span className="text-[#64748B] block">Language Format:</span>
@@ -115,18 +156,12 @@ export const BookDetailModal: React.FC<BookDetailModalProps> = ({ book, onClose 
                   <span className="text-[#64748B] block">Formats Available:</span>
                   <span className="font-semibold text-[#0F2238]">{book.format.join(', ')}</span>
                 </div>
-                {book.lexileLevel && (
-                  <div>
-                    <span className="text-[#64748B] block">Lexile Score:</span>
-                    <span className="font-bold text-[#0F4C3A]">{book.lexileLevel}</span>
-                  </div>
-                )}
-                {book.arLevel && (
-                  <div>
-                    <span className="text-[#64748B] block">Accelerated Reader (AR):</span>
-                    <span className="font-bold text-[#0F4C3A]">AR Level {book.arLevel}</span>
-                  </div>
-                )}
+                <div className="col-span-2 border-t border-[#E2D9CE]/60 pt-2">
+                  <span className="text-[#64748B] block">Distributors & Retail Availability:</span>
+                  <span className="font-medium text-[#0F2238]">
+                    KidsWorldBooks.com Online Store, Amazon, Apple, B&N, Ingram, Follett, Baker & Taylor, Brodart, EBSCO, Target, Walmart
+                  </span>
+                </div>
               </div>
 
               {/* Description */}
@@ -160,7 +195,7 @@ export const BookDetailModal: React.FC<BookDetailModalProps> = ({ book, onClose 
                 <div className="border-t border-[#E2D9CE] pt-3">
                   <h4 className="text-xs font-bold uppercase tracking-wider text-[#C2410C] mb-2 flex items-center gap-1.5">
                     <Award className="w-4 h-4 text-[#C2410C]" />
-                    <span>Editorial Reviews & Critical Acclaim</span>
+                    <span>Editorial Reviews & Recognition</span>
                   </h4>
                   <div className="space-y-2">
                     {book.reviews.map((rev, i) => (
@@ -172,19 +207,27 @@ export const BookDetailModal: React.FC<BookDetailModalProps> = ({ book, onClose 
                 </div>
               )}
 
-              {/* Teaching Guide CTA */}
-              {book.teachingGuideUrl && (
-                <div className="pt-2">
-                  <Link
-                    to={book.teachingGuideUrl}
-                    onClick={onClose}
-                    className="inline-flex items-center gap-2 text-xs font-bold text-[#0F4C3A] hover:underline"
-                  >
-                    <FileText className="w-4 h-4" />
-                    <span>Explore Lesson Plans & Teaching Guides for this title →</span>
-                  </Link>
-                </div>
-              )}
+              {/* Direct Store Link Banner */}
+              <div className="pt-2 border-t border-[#E2D9CE] flex flex-wrap items-center justify-between gap-3">
+                <Link
+                  to="/teaching-guides"
+                  onClick={onClose}
+                  className="inline-flex items-center gap-1.5 text-xs font-bold text-[#0F4C3A] hover:underline"
+                >
+                  <FileText className="w-4 h-4" />
+                  <span>Explore All K–10 Teaching Guides →</span>
+                </Link>
+
+                <a
+                  href={book.storeUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center gap-1.5 text-xs font-bold text-[#C2410C] hover:underline"
+                >
+                  <span>Direct Product Page on KidsWorldBooks.com</span>
+                  <ExternalLink className="w-3.5 h-3.5" />
+                </a>
+              </div>
 
             </div>
           </div>
@@ -192,15 +235,15 @@ export const BookDetailModal: React.FC<BookDetailModalProps> = ({ book, onClose 
 
         {/* Modal Footer */}
         <div className="p-4 border-t border-[#E2D9CE] bg-[#FAF7F2] flex items-center justify-between text-xs text-[#64748B]">
-          <span className="flex items-center gap-1">
+          <span className="flex items-center gap-1.5">
             <ShieldCheck className="w-4 h-4 text-[#0F4C3A]" />
-            <span>Human-created catalog verification guaranteed</span>
+            <span>100% Human-Created • Since 2004 • Secure Checkout via KidsWorldBooks.com</span>
           </span>
           <button
             onClick={onClose}
             className="px-4 py-2 bg-white border border-[#E2D9CE] text-[#0F2238] font-bold rounded-lg hover:bg-[#E2D9CE]/60 transition-colors"
           >
-            Close Window
+            Close
           </button>
         </div>
 

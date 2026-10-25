@@ -69,7 +69,7 @@ export const App: React.FC = () => {
                     "Build confidence through predictable, rhythmic sentence structures",
                     "Support early dual-language immersion"
                   ],
-                  filterFn: (b) => b.readerLevel.includes("Beginning Readers (K–2)"),
+                  filterFn: (b) => Boolean(b.linkedPages?.includes("/early-reader-books-k2")) || b.readerLevel.includes("Beginning Readers (K–2)"),
                   relatedRoutes: [
                     { label: "Phonics & Decoding", href: "/phonics-books-k2" },
                     { label: "Vocabulary Builders", href: "/vocab-books-kids" },
@@ -95,7 +95,7 @@ export const App: React.FC = () => {
                     "Enhance auditory discrimination through tongue twisters",
                     "Improve oral reading fluency"
                   ],
-                  filterFn: (b) => b.readerLevel.includes("Beginning Readers (K–2)") || b.readerLevel.includes("Phonics & Decoding"),
+                  filterFn: (b) => Boolean(b.linkedPages?.includes("/phonics-books-k2")) || b.readerLevel.includes("Phonics & Decoding") || b.title.toLowerCase().includes("twister"),
                   relatedRoutes: [
                     { label: "Beginning Readers K–2", href: "/early-reader-books-k2" },
                     { label: "Wordless Books", href: "/wordless-picture-books" }
@@ -120,7 +120,7 @@ export const App: React.FC = () => {
                     "Encourage oral explanation and discussion",
                     "Dyslexic-friendly text support for varied reading abilities"
                   ],
-                  filterFn: (b) => b.theme.includes("Character, Career & Life Skills") || b.readerLevel.includes("Elementary (Grades 3–5)"),
+                  filterFn: (b) => Boolean(b.linkedPages?.includes("/vocab-books-kids")) || b.theme.includes("Character, Career & Life Skills"),
                   relatedRoutes: [
                     { label: "Elementary Grades 3–5", href: "/elementary-books-3-4" },
                     { label: "Reluctant Readers", href: "/reluctant-reader-books" }
@@ -145,7 +145,7 @@ export const App: React.FC = () => {
                     "Introduce basic economic parables and financial literacy",
                     "Promote independent reading habit formation"
                   ],
-                  filterFn: (b) => b.readerLevel.includes("Elementary (Grades 3–5)"),
+                  filterFn: (b) => Boolean(b.linkedPages?.includes("/elementary-books-3-4")) || b.readerLevel.includes("Elementary (Grades 3–5)"),
                   relatedRoutes: [
                     { label: "Chapter Books (Ages 7–14)", href: "/chapter-books-kids-7-14" },
                     { label: "STEM & Literacy Units", href: "/stem-literacy-units" }
@@ -170,7 +170,7 @@ export const App: React.FC = () => {
                     "Analyze character motivations and plot suspense",
                     "Primary source historical empathy and geographical awareness"
                   ],
-                  filterFn: (b) => b.readerLevel.includes("Chapter Books & YA (Ages 7–14)"),
+                  filterFn: (b) => Boolean(b.linkedPages?.includes("/chapter-books-kids-7-14")) || b.readerLevel.includes("Chapter Books & YA (Ages 7–14)"),
                   relatedRoutes: [
                     { label: "Reluctant Readers", href: "/reluctant-reader-books" },
                     { label: "History & Culture", href: "/history-culture-books-kids" }
@@ -195,7 +195,7 @@ export const App: React.FC = () => {
                     "Maintain native language literacy while expanding English acquisition",
                     "Promote cross-cultural family reading sessions"
                   ],
-                  filterFn: (b) => b.readerLevel.includes("Bilingual & ESL"),
+                  filterFn: (b) => Boolean(b.linkedPages?.includes("/bilingual-books-spanish")) || b.readerLevel.includes("Bilingual & ESL") || b.language.includes("Bilingual") || b.language.includes("Spanish"),
                   relatedRoutes: [
                     { label: "Beginning Readers K–2", href: "/early-reader-books-k2" },
                     { label: "Spanish Tongue Twisters", href: "/buy-books?search=trabalenguas" }
@@ -220,7 +220,7 @@ export const App: React.FC = () => {
                     "Leverage visual clues to assist decoding",
                     "Foster positive reading self-concept"
                   ],
-                  filterFn: (b) => b.theme.includes("Humor, Mystery & Adventure") || b.format.includes("Bundles & Series"),
+                  filterFn: (b) => Boolean(b.linkedPages?.includes("/reluctant-reader-books")) || b.theme.includes("Humor, Mystery & Adventure"),
                   relatedRoutes: [
                     { label: "Chapter Books (7–14)", href: "/chapter-books-kids-7-14" },
                     { label: "Wordless Books", href: "/wordless-picture-books" }
@@ -245,7 +245,7 @@ export const App: React.FC = () => {
                     "Eliminate decoding pressure for ESL or struggling readers",
                     "Develop detailed visual observation and dialogue writing"
                   ],
-                  filterFn: (b) => b.title.toLowerCase().includes("wordless") || b.language.includes("Wordless"),
+                  filterFn: (b) => Boolean(b.linkedPages?.includes("/wordless-picture-books")) || b.title.toLowerCase().includes("wordless") || b.language.includes("Wordless"),
                   relatedRoutes: [
                     { label: "Beginning Readers K–2", href: "/early-reader-books-k2" },
                     { label: "Reluctant Readers", href: "/reluctant-reader-books" }
@@ -271,11 +271,38 @@ export const App: React.FC = () => {
                     "Apply math counting and basic economic parables to real life",
                     "Foster environmental curiosity and observation"
                   ],
-                  filterFn: (b) => b.theme.includes("STEM, Nature & Food"),
+                  filterFn: (b) => Boolean(b.linkedPages?.includes("/stem-literacy-units")) || b.theme.includes("STEM, Nature & Food"),
                   relatedRoutes: [
                     { label: "Teaching Guides", href: "/teaching-guides" },
-                    { label: "Nature & Science", href: "/stem-nature-books-kids" },
-                    { label: "Food & Cooking", href: "/food-books-kids" }
+                    { label: "Ready-to-Use Literacy Units", href: "/literacy-units" },
+                    { label: "Nature & Science", href: "/stem-nature-books-kids" }
+                  ]
+                }}
+              />
+            } 
+          />
+
+          {/* Dedicated Route: Ready-to-Use Literacy Units ("4 Books for Kids" Bundles) */}
+          <Route 
+            path="/literacy-units" 
+            element={
+              <ReadingGuideTemplatePage
+                onSelectBook={handleSelectBook}
+                config={{
+                  title: "Ready-to-Use Literacy Units (4 Books for Kids Collections)",
+                  subtitle: "Themed 4-book bundles paired with low-prep classroom & homeschool literacy units.",
+                  categoryType: "pedagogy",
+                  description: "Save with our curated '4 Books for Kids' themed collections—covering Mysteries, STEM, Bilingual Spanish-English, Careers, Food, Animals, Bedtime, and US Immigrant Biographies.",
+                  pedagogicalGoals: [
+                    "Provide cohesive 4-book thematic text sets for classroom stations",
+                    "Save on multi-title bundles with included lesson plans",
+                    "Support differentiated reading across PreK–Grade 8"
+                  ],
+                  filterFn: (b) => Boolean(b.linkedPages?.includes("/literacy-units")) || b.format.includes("Bundles & Series") || b.slug.startsWith("4-"),
+                  relatedRoutes: [
+                    { label: "Teaching Guides (K–10)", href: "/teaching-guides" },
+                    { label: "STEM & Literacy Units", href: "/stem-literacy-units" },
+                    { label: "Homeschool Guide", href: "/homeschool-guide" }
                   ]
                 }}
               />
@@ -297,7 +324,7 @@ export const App: React.FC = () => {
                     "Develop observational curiosity about the natural world",
                     "Learn elementary space and environmental science terms"
                   ],
-                  filterFn: (b) => b.theme.includes("STEM, Nature & Food"),
+                  filterFn: (b) => Boolean(b.linkedPages?.includes("/stem-nature-books-kids")) || b.theme.includes("STEM, Nature & Food"),
                   relatedRoutes: [
                     { label: "STEM & Literacy Units", href: "/stem-literacy-units" },
                     { label: "Animals & Pets", href: "/animal-books-kids" }
@@ -321,7 +348,7 @@ export const App: React.FC = () => {
                     "Combine reading comprehension with practical cooking activities",
                     "Reinforce kitchen safety, fractions, and measurements"
                   ],
-                  filterFn: (b) => b.description.toLowerCase().includes("recipe") || b.title.toLowerCase().includes("crumbs"),
+                  filterFn: (b) => Boolean(b.linkedPages?.includes("/food-books-kids")) || b.description.toLowerCase().includes("recipe") || b.title.toLowerCase().includes("food") || b.title.toLowerCase().includes("banana") || b.title.toLowerCase().includes("grow"),
                   relatedRoutes: [
                     { label: "Easy Children's Recipes", href: "/easy-childrens-recipes" },
                     { label: "STEM & Literacy Units", href: "/stem-literacy-units" }
@@ -345,7 +372,7 @@ export const App: React.FC = () => {
                     "Understand basic trade, value creation, and money management",
                     "Explore diverse community careers and self-worth"
                   ],
-                  filterFn: (b) => b.theme.includes("Character, Career & Life Skills"),
+                  filterFn: (b) => Boolean(b.linkedPages?.includes("/career-money-books-kids")) || b.theme.includes("Character, Career & Life Skills"),
                   relatedRoutes: [
                     { label: "Elementary Grades 3–5", href: "/elementary-books-3-4" },
                     { label: "SEL & Character", href: "/sel-books-kids" }
@@ -364,12 +391,12 @@ export const App: React.FC = () => {
                   title: "Animals & Pet Stories",
                   subtitle: "True pet rescues and animal adventures.",
                   categoryType: "topic",
-                  description: "Inspirational true stories about courageous dogs, animal rescues, and pet companionship.",
+                  description: "Inspirational true stories about courageous dogs, animal rescues, and wildlife habitats.",
                   pedagogicalGoals: [
                     "Build empathy and compassion for animals",
                     "Engage readers through high-interest non-fiction narrative"
                   ],
-                  filterFn: (b) => b.title.toLowerCase().includes("pet") || b.title.toLowerCase().includes("animal"),
+                  filterFn: (b) => Boolean(b.linkedPages?.includes("/animal-books-kids")) || b.title.toLowerCase().includes("animal") || b.title.toLowerCase().includes("dog") || b.title.toLowerCase().includes("gopher") || b.title.toLowerCase().includes("polar bear") || b.title.toLowerCase().includes("butterfly"),
                   relatedRoutes: [
                     { label: "Reluctant Readers", href: "/reluctant-reader-books" },
                     { label: "Chapter Books (7–14)", href: "/chapter-books-kids-7-14" }
@@ -393,9 +420,10 @@ export const App: React.FC = () => {
                     "Reinforce fair play, sportsmanship, and persistence",
                     "Connect active play with reading"
                   ],
-                  filterFn: (b) => b.theme.includes("Humor, Mystery & Adventure"),
+                  filterFn: (b) => Boolean(b.linkedPages?.includes("/sports-books-kids")) || b.title.toLowerCase().includes("golf") || b.title.toLowerCase().includes("bowler"),
                   relatedRoutes: [
-                    { label: "SEL & Character", href: "/sel-books-kids" }
+                    { label: "SEL & Character", href: "/sel-books-kids" },
+                    { label: "Wordless Books", href: "/wordless-picture-books" }
                   ]
                 }}
               />
@@ -416,7 +444,7 @@ export const App: React.FC = () => {
                     "Analyze fable morals and character choices",
                     "Compare cross-cultural storytelling traditions"
                   ],
-                  filterFn: (b) => b.subtitle?.toLowerCase().includes("parable") || b.theme.includes("History, Culture & Biography"),
+                  filterFn: (b) => Boolean(b.linkedPages?.includes("/folktales-fables-kids")) || Boolean(b.subtitle?.toLowerCase().includes("parable")) || b.theme.includes("History, Culture & Biography"),
                   relatedRoutes: [
                     { label: "Bilingual Books", href: "/bilingual-books-spanish" },
                     { label: "Books Like Classics", href: "/books-like-kids-classics" }
@@ -440,7 +468,7 @@ export const App: React.FC = () => {
                     "Develop emotional awareness and empathy",
                     "Provide strategies for bedtime fear and anxiety"
                   ],
-                  filterFn: (b) => b.theme.includes("Character, Career & Life Skills") || b.theme.includes("Bedtime, Faith & Family"),
+                  filterFn: (b) => Boolean(b.linkedPages?.includes("/sel-books-kids")) || b.theme.includes("Character, Career & Life Skills") || b.theme.includes("Bedtime, Faith & Family"),
                   relatedRoutes: [
                     { label: "Bedtime & Read-Aloud", href: "/bedtime-books-kids" },
                     { label: "Christian & Faith-Based", href: "/christian-childrens-books" }
@@ -464,10 +492,34 @@ export const App: React.FC = () => {
                     "Calm nighttime routine through rhythmic reading cadence",
                     "Build family bonding and literacy enjoyment"
                   ],
-                  filterFn: (b) => b.theme.includes("Bedtime, Faith & Family"),
+                  filterFn: (b) => Boolean(b.linkedPages?.includes("/bedtime-books-kids")) || Boolean(b.linkedPages?.includes("/read-aloud-books-kids")) || b.theme.includes("Bedtime, Faith & Family"),
                   relatedRoutes: [
                     { label: "Beginning Readers K–2", href: "/early-reader-books-k2" },
                     { label: "SEL & Character", href: "/sel-books-kids" }
+                  ]
+                }}
+              />
+            } 
+          />
+
+          <Route 
+            path="/read-aloud-books-kids" 
+            element={
+              <ReadingGuideTemplatePage
+                onSelectBook={handleSelectBook}
+                config={{
+                  title: "Read-Aloud Books for Kids",
+                  subtitle: "Interactive stories, tongue twisters, and mysteries for classroom & family read-alouds.",
+                  categoryType: "topic",
+                  description: "Engaging picture books with rhythm, surprise endings, and visual clues that captivate groups during circle time or bedtime.",
+                  pedagogicalGoals: [
+                    "Build active listening and oral prediction skills",
+                    "Spark group discussion and shared laughter"
+                  ],
+                  filterFn: (b) => Boolean(b.linkedPages?.includes("/read-aloud-books-kids")) || Boolean(b.linkedPages?.includes("/bedtime-books-kids")) || b.theme.includes("Bedtime, Faith & Family"),
+                  relatedRoutes: [
+                    { label: "Bedtime Books", href: "/bedtime-books-kids" },
+                    { label: "Beginning Readers K–2", href: "/early-reader-books-k2" }
                   ]
                 }}
               />
@@ -489,7 +541,7 @@ export const App: React.FC = () => {
                     "Instill core moral values (honesty, kindness, stewardship)",
                     "Encourage family discussion on faith and community responsibility"
                   ],
-                  filterFn: (b) => b.theme.includes("Bedtime, Faith & Family") || Boolean(b.subtitle?.toLowerCase().includes("parable")),
+                  filterFn: (b) => Boolean(b.linkedPages?.includes("/christian-childrens-books")) || b.theme.includes("Bedtime, Faith & Family") || Boolean(b.subtitle?.toLowerCase().includes("parable")),
                   relatedRoutes: [
                     { label: "Homeschool Guide", href: "/homeschool-guide" },
                     { label: "SEL & Character", href: "/sel-books-kids" }
@@ -499,7 +551,7 @@ export const App: React.FC = () => {
             } 
           />
 
-          {/* New Page: History, Culture & Biography */}
+          {/* History, Culture & Biography */}
           <Route 
             path="/history-culture-books-kids" 
             element={
@@ -514,7 +566,7 @@ export const App: React.FC = () => {
                     "Connect primary historical source accounts with engaging story narrative",
                     "Promote cultural empathy and historical geography"
                   ],
-                  filterFn: (b) => b.theme.includes("History, Culture & Biography"),
+                  filterFn: (b) => Boolean(b.linkedPages?.includes("/history-culture-books-kids")) || b.theme.includes("History, Culture & Biography"),
                   relatedRoutes: [
                     { label: "Chapter Books (7–14)", href: "/chapter-books-kids-7-14" },
                     { label: "Bilingual Books", href: "/bilingual-books-spanish" }
@@ -539,7 +591,7 @@ export const App: React.FC = () => {
                     "Compare classical rhyme structures with modern humorous twists",
                     "Provide accessible entry points into literary genre conventions"
                   ],
-                  filterFn: (b) => b.theme.includes("Humor, Mystery & Adventure"),
+                  filterFn: (b) => Boolean(b.linkedPages?.includes("/books-like-kids-classics")) || b.theme.includes("Humor, Mystery & Adventure"),
                   relatedRoutes: [
                     { label: "Reading Guides Index", href: "/kids-reading-guides" },
                     { label: "Homeschool Guide", href: "/homeschool-guide" }
@@ -552,14 +604,13 @@ export const App: React.FC = () => {
           {/* Nav 3: Homeschool & Classroom */}
           <Route path="/homeschool-guide" element={<HomeschoolGuidePage />} />
           <Route path="/teaching-guides" element={<TeachingGuidesPage />} />
-          <Route path="/literacy-units" element={<Navigate to="/stem-literacy-units" replace />} />
-          <Route path="/learning-resources" element={<TeachingGuidesPage />} />
+          <Route path="/learning-resources" element={<FreeResourcesPage onSelectBook={handleSelectBook} />} />
 
           {/* Nav 4: Free Resources */}
-          <Route path="/free-childrens-books" element={<FreeResourcesPage />} />
-          <Route path="/online-story-secrets" element={<FreeResourcesPage />} />
-          <Route path="/easy-childrens-recipes" element={<FreeResourcesPage />} />
-          <Route path="/childrens-holiday-books" element={<FreeResourcesPage />} />
+          <Route path="/free-childrens-books" element={<FreeResourcesPage onSelectBook={handleSelectBook} />} />
+          <Route path="/online-story-secrets" element={<FreeResourcesPage onSelectBook={handleSelectBook} />} />
+          <Route path="/easy-childrens-recipes" element={<FreeResourcesPage onSelectBook={handleSelectBook} />} />
+          <Route path="/childrens-holiday-books" element={<FreeResourcesPage onSelectBook={handleSelectBook} />} />
 
           {/* Nav 5: About */}
           <Route path="/about-kids-world-books" element={<AboutPage />} />
@@ -569,6 +620,7 @@ export const App: React.FC = () => {
           <Route path="/ai-policy" element={<AIPolicyPage />} />
           <Route path="/contact-sign-up" element={<ContactPage />} />
           <Route path="/privacy-policy-faq" element={<PrivacyPolicyPage />} />
+          <Route path="/store-policies-faq" element={<PrivacyPolicyPage />} />
 
           {/* Fallback Catch-All */}
           <Route path="*" element={<Navigate to="/" replace />} />
