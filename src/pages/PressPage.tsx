@@ -48,7 +48,7 @@ export const PressPage: React.FC = () => {
 
         <div className="pt-4 border-t border-[#E2D9CE] flex flex-wrap gap-3">
           <a
-            href="https://kidsworldbooks.com/buy-books/ols/products/laughter-laughter-now-after"
+            href="https://kidsworldbooks.com/buy-books?product=019d6328-b458-73b3-bdee-a806dd25a8ce"
             target="_blank"
             rel="noopener noreferrer"
             className="inline-flex items-center gap-1.5 bg-[#0F2238] hover:bg-[#0F4C3A] text-white text-xs font-bold px-5 py-2.5 rounded-lg transition-colors"
@@ -57,7 +57,7 @@ export const PressPage: React.FC = () => {
             <ExternalLink className="w-3.5 h-3.5" />
           </a>
           <a
-            href="https://kidsworldbooks.com/buy-books/ols/products/retail-catalog"
+            href="https://kidsworldbooks.com/buy-books?product=0194b86e-346b-7335-a1f2-b022dad0e62f"
             target="_blank"
             rel="noopener noreferrer"
             className="inline-flex items-center gap-1.5 bg-[#FAF7F2] border border-[#E2D9CE] text-[#0F2238] text-xs font-bold px-5 py-2.5 rounded-lg hover:bg-slate-100 transition-colors"

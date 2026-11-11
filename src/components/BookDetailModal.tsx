@@ -11,6 +11,12 @@ interface BookDetailModalProps {
 export const BookDetailModal: React.FC<BookDetailModalProps> = ({ book, onClose }) => {
   if (!book) return null;
 
+  const formattedPrice = book.isFree
+    ? 'FREE'
+    : book.priceMax && book.priceMax > book.price
+    ? `$${book.price.toFixed(2)} – $${book.priceMax.toFixed(2)}`
+    : `$${book.price.toFixed(2)}`;
+
   return (
     <div className="fixed inset-0 z-50 overflow-y-auto bg-[#0F2238]/70 backdrop-blur-xs flex items-center justify-center p-4 sm:p-6 animate-fadeIn">
       <div className="bg-white border border-[#E2D9CE] rounded-2xl max-w-3xl w-full overflow-hidden shadow-2xl relative flex flex-col max-h-[90vh]">
@@ -21,7 +27,7 @@ export const BookDetailModal: React.FC<BookDetailModalProps> = ({ book, onClose 
             <span className="bg-[#0F2238] text-white text-xs font-bold px-2.5 py-1 rounded">
               Verified Bibliographic Record
             </span>
-            {book.isbn && (
+            {book.isbn && book.isbn !== "Premio Publishing Direct" && (
               <span className="text-xs text-[#64748B] font-mono">ISBN: {book.isbn}</span>
             )}
           </div>
@@ -61,8 +67,8 @@ export const BookDetailModal: React.FC<BookDetailModalProps> = ({ book, onClose 
                         ${book.originalPrice.toFixed(2)}
                       </span>
                     )}
-                    <span className="text-xl font-bold text-[#0F2238]">
-                      {book.isFree ? "FREE EBOOK" : `$${book.price.toFixed(2)}`}
+                    <span className="text-lg font-bold text-[#0F2238]">
+                      {formattedPrice}
                     </span>
                   </div>
                 </div>
@@ -75,7 +81,7 @@ export const BookDetailModal: React.FC<BookDetailModalProps> = ({ book, onClose 
                   className="w-full inline-flex items-center justify-center gap-2 bg-[#C2410C] hover:bg-[#9A3412] text-white py-3 px-4 rounded-lg font-bold text-xs sm:text-sm transition-colors shadow-sm"
                 >
                   <ShoppingCart className="w-4 h-4 shrink-0" />
-                  <span>{book.isFree ? "Get Free on KidsWorldBooks" : "Buy on KidsWorldBooks.com"}</span>
+                  <span>Buy Now on KidsWorldBooks.com</span>
                   <ExternalLink className="w-3.5 h-3.5 shrink-0" />
                 </a>
 
@@ -87,7 +93,7 @@ export const BookDetailModal: React.FC<BookDetailModalProps> = ({ book, onClose 
                     rel="noopener noreferrer"
                     className="w-full inline-flex items-center justify-center gap-2 bg-white hover:bg-[#E2D9CE]/40 text-[#0F2238] border border-[#E2D9CE] py-2 px-3 rounded-lg font-semibold text-xs transition-colors"
                   >
-                    <span>Buy Digital Ebook ($3.99)</span>
+                    <span>Buy Digital Ebook Edition</span>
                     <ExternalLink className="w-3.5 h-3.5 text-[#64748B]" />
                   </a>
                 )}
@@ -224,7 +230,7 @@ export const BookDetailModal: React.FC<BookDetailModalProps> = ({ book, onClose 
                   rel="noopener noreferrer"
                   className="inline-flex items-center gap-1.5 text-xs font-bold text-[#C2410C] hover:underline"
                 >
-                  <span>Direct Product Page on KidsWorldBooks.com</span>
+                  <span>Complete Purchase on KidsWorldBooks.com</span>
                   <ExternalLink className="w-3.5 h-3.5" />
                 </a>
               </div>

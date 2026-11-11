@@ -24,32 +24,32 @@ const STORY_SECRETS_LIST = [
   {
     book: "Big Black Seed",
     secret: "The Three Sisters of Indigenous Agriculture: Corn (stalk supports beans), Beans (fix nitrogen in soil), and Squash (broad leaves shade soil and retain moisture).",
-    storeUrl: "https://kidsworldbooks.com/buy-books/ols/products/big-black-seed"
+    storeUrl: "https://kidsworldbooks.com/buy-books?product=01959afd-2fd5-722b-a617-eeba6bda2d08"
   },
   {
     book: "Laughter, Laughter – Now & After",
     secret: "Hidden Visual Challenge: Count 24 hidden circles and spheres across the 40-cover 20th-anniversary compilation pages!",
-    storeUrl: "https://kidsworldbooks.com/buy-books/ols/products/laughter-laughter-now-after"
+    storeUrl: "https://kidsworldbooks.com/buy-books?product=019d6328-b458-73b3-bdee-a806dd25a8ce"
   },
   {
     book: "Samuel Sailing: The True Story of an Immigrant Boy",
     secret: "Historical Clues: Find all 7 modes of 19th-century transportation used on Samuel's journey from England to New Orleans and up the Mississippi River (walking, horse cart, sailing ship, rowboat, steamboat, train, covered wagon).",
-    storeUrl: "https://kidsworldbooks.com/buy-books/ols/products/samuel-sailing-the-true-story-of-an-immigrant-boy"
+    storeUrl: "https://kidsworldbooks.com/buy-books?product=01951bba-f31d-7001-ae01-00c167a03c08"
   },
   {
     book: "Agnes's Rescue: Biography of an Immigrant Girl",
     secret: "True History Note: Agnes Caldwell traveled with the 1856 Willie Handcart Company across the Rocky Mountains and was rescued in deep Wyoming snow.",
-    storeUrl: "https://kidsworldbooks.com/buy-books/ols/products/agness-rescue-biography-of-an-immigrant-girl"
+    storeUrl: "https://kidsworldbooks.com/buy-books?product=019cb585-67c9-703a-ac20-242f8eaee2ad"
   },
   {
     book: "Crumbs on the Stairs / Migas en las escaleras",
     secret: "Visual Counting Clue: Follow the tiny butterfly and the trail of crumbs from 1 to 10 in Spanish and English to discover who shared the snack!",
-    storeUrl: "https://kidsworldbooks.com/buy-books/ols/products/crumbs-on-the-stairs-migas-en-las-escaleras-a-mystery-in-spanish-english"
+    storeUrl: "https://kidsworldbooks.com/buy-books?product=01967d9b-d0a0-7dd6-9234-fb282059d349"
   },
   {
     book: "GROW: How We Get Food from Our Garden",
     secret: "Garden Ecology Clue: Spot the pollinators (bees, butterflies, earthworms) working in the soil and blossoms on every spread.",
-    storeUrl: "https://kidsworldbooks.com/buy-books/ols/products/grow-how-we-get-food-from-our-garden"
+    storeUrl: "https://kidsworldbooks.com/buy-books?product=019cbffd-0751-76f4-b362-bdc82fef1693"
   }
 ];
 
@@ -71,79 +71,79 @@ const HOLIDAY_CALENDAR = [
     holiday: "New Year's & Fresh Starts (January)",
     book: "Laughter, Laughter – Now & After",
     desc: "Celebrate the new year with 20 years of joyful illustrations and hidden picture challenges.",
-    storeUrl: "https://kidsworldbooks.com/buy-books/ols/products/laughter-laughter-now-after"
+    storeUrl: "https://kidsworldbooks.com/buy-books?product=019d6328-b458-73b3-bdee-a806dd25a8ce"
   },
   {
     holiday: "Groundhog Day & Golf / Animal Fun (February 2)",
     book: "Gopher Golf: A Wordless Picture Book",
     desc: "Burrowing critter antics that get kids laughing and narrating their own story.",
-    storeUrl: "https://kidsworldbooks.com/buy-books/ols/products/gopher-golf-a-wordless-picture-book"
+    storeUrl: "https://kidsworldbooks.com/buy-books?product=019c90ec-a3b7-777c-a2c0-4b1f853f3116"
   },
   {
     holiday: "Valentine's Day & Family Kindness (February 14)",
     book: "Crumbs on the Stairs / Migas en las escaleras",
     desc: "A warm bilingual mystery about sharing treats with someone you love.",
-    storeUrl: "https://kidsworldbooks.com/buy-books/ols/products/crumbs-on-the-stairs-migas-en-las-escaleras-a-mystery-in-spanish-english"
+    storeUrl: "https://kidsworldbooks.com/buy-books?product=01967d9b-d0a0-7dd6-9234-fb282059d349"
   },
   {
     holiday: "St. Patrick's Day & Colors (March 17)",
     book: "Great Cape o' Colors: Career Costumes for Kids",
     desc: "Explore every color of the rainbow and discover your child's bright talents.",
-    storeUrl: "https://kidsworldbooks.com/buy-books/ols/products/great-cape-o-colors-career-costumes-for-kids"
+    storeUrl: "https://kidsworldbooks.com/buy-books?product=019d0c65-d9ba-73f6-b38e-cec839eb2fba"
   },
   {
     holiday: "Easter & Spring Bunnies (March / April)",
     book: "The Case of the Missing Carrot Cake",
     desc: "Detectives Wilcox & Griswold track down a missing carrot cake on the farm!",
-    storeUrl: "https://kidsworldbooks.com/buy-books/ols/products/the-case-of-the-missing-carrot-cake-a-wilcox-and-griswold-mystery"
+    storeUrl: "https://kidsworldbooks.com/buy-books?product=01951bb9-90d5-7002-8496-c283fa0b01a0"
   },
   {
     holiday: "Earth Day & Spring Gardening (April 22)",
     book: "GROW: How We Get Food from Our Garden & Butterfly Blink",
     desc: "Celebrate nature, pollinators, and planting seeds with USDA & Library of Congress selected titles.",
-    storeUrl: "https://kidsworldbooks.com/buy-books/ols/products/grow-how-we-get-food-from-our-garden"
+    storeUrl: "https://kidsworldbooks.com/buy-books?product=019cbffd-0751-76f4-b362-bdc82fef1693"
   },
   {
     holiday: "Juneteenth & Cultural Heritage (June 19)",
     book: "4 Stories of Immigrant Kids & Multicultural Mysteries",
     desc: "Celebrate diverse American voices, courage, and cross-cultural friendship.",
-    storeUrl: "https://kidsworldbooks.com/buy-books/ols/products/4-stories-of-immigrant-kids"
+    storeUrl: "https://kidsworldbooks.com/buy-books?product=01951bba-738a-7002-8fcd-b2637e22ac28"
   },
   {
     holiday: "Independence Day – Happy Birthday America 250! (July 4)",
     book: "Samuel Sailing & Agnes's Rescue (Young American Immigrants)",
     desc: "True stories of young immigrants who helped build the United States.",
-    storeUrl: "https://kidsworldbooks.com/buy-books/ols/products/samuel-sailing-the-true-story-of-an-immigrant-boy"
+    storeUrl: "https://kidsworldbooks.com/buy-books?product=01951bba-f31d-7001-ae01-00c167a03c08"
   },
   {
     holiday: "Pioneer Day (July 24)",
     book: "Agnes's Rescue: Biography of an Immigrant Girl",
     desc: "The inspiring true 1856 pioneer handcart rescue story.",
-    storeUrl: "https://kidsworldbooks.com/buy-books/ols/products/agness-rescue-biography-of-an-immigrant-girl"
+    storeUrl: "https://kidsworldbooks.com/buy-books?product=019cb585-67c9-703a-ac20-242f8eaee2ad"
   },
   {
     holiday: "Labor Day & Career Exploration (September)",
     book: "The Bridge of the Golden Wood",
     desc: "A parable on how to earn a living, build skills, and serve the community.",
-    storeUrl: "https://kidsworldbooks.com/buy-books/ols/products/the-bridge-of-the-golden-wood-a-parable-on-how-to-earn-a-living"
+    storeUrl: "https://kidsworldbooks.com/buy-books?product=019d0cf6-347e-743c-ae94-5cc5a98b932f"
   },
   {
     holiday: "Halloween & Spooky-Fun Mysteries (October 31)",
     book: "Sounds in the House: A Mystery & Milo's Dog Says 'Moink!'",
     desc: "Suspenseful (but not too scary!) nocturnal sounds and funny monster-free mysteries.",
-    storeUrl: "https://kidsworldbooks.com/buy-books/ols/products/sounds-in-the-house-a-mystery"
+    storeUrl: "https://kidsworldbooks.com/buy-books?product=01951bb9-90d5-7002-8496-c283fa0b01a0"
   },
   {
     holiday: "Thanksgiving, Harvest & Gratitude (November)",
     book: "Big Black Seed & Bad Bananas: A Story Cookbook",
     desc: "Celebrate the Three Sisters harvest (corn, beans, squash) and family baking.",
-    storeUrl: "https://kidsworldbooks.com/buy-books/ols/products/big-black-seed"
+    storeUrl: "https://kidsworldbooks.com/buy-books?product=01959afd-2fd5-722b-a617-eeba6bda2d08"
   },
   {
     holiday: "Christmas, Winter & Starlight (December)",
     book: "Bright Star, Night Star & Polar Bear Bowler",
     desc: "Gaze at winter stars and enjoy snowy polar bear bowling adventures.",
-    storeUrl: "https://kidsworldbooks.com/buy-books/ols/products/bright-star-night-star-an-astronomy-story"
+    storeUrl: "https://kidsworldbooks.com/buy-books?product=019cbb21-e07e-730f-bd8d-e850a2f8de83"
   }
 ];
 
@@ -299,7 +299,7 @@ export const FreeResourcesPage: React.FC<Props> = ({ onSelectBook }) => {
                 Selected by the State of Vermont for primary school financial literacy curriculum! Helps students understand how skills, problem-solving, and service create value in a community.
               </p>
               <a
-                href="https://kidsworldbooks.com/buy-books/ols/products/the-bridge-of-the-golden-wood-a-parable-on-how-to-earn-a-living"
+                href="https://kidsworldbooks.com/buy-books?product=019d0cf6-347e-743c-ae94-5cc5a98b932f"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="inline-flex items-center gap-1.5 text-xs font-bold text-[#C2410C] hover:underline pt-2"
@@ -320,7 +320,7 @@ export const FreeResourcesPage: React.FC<Props> = ({ onSelectBook }) => {
                 Available in specialized dyslexic-friendly font to reduce letter reversal and visual crowding while giving emerging readers a hilarious twist on a classic farm tale.
               </p>
               <a
-                href="https://kidsworldbooks.com/buy-books/ols/products/ma-macdonald-flees-the-farm"
+                href="https://kidsworldbooks.com/buy-books?product=01951bba-8232-7001-98ff-a718f4d6b357"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="inline-flex items-center gap-1.5 text-xs font-bold text-[#C2410C] hover:underline pt-2"
@@ -407,7 +407,7 @@ export const FreeResourcesPage: React.FC<Props> = ({ onSelectBook }) => {
               </div>
               <div className="pt-3 border-t border-[#E2D9CE] flex flex-wrap gap-2">
                 <a
-                  href="https://kidsworldbooks.com/buy-books/ols/products/agness-rescue-ebook"
+                  href="https://kidsworldbooks.com/buy-books?product=019ce37c-e752-7566-9b59-73d5111854bd"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="inline-flex items-center gap-1.5 bg-[#0F4C3A] hover:bg-[#0F2238] text-white text-xs px-4 py-2 rounded-lg font-bold transition-colors"
@@ -432,7 +432,7 @@ export const FreeResourcesPage: React.FC<Props> = ({ onSelectBook }) => {
               </div>
               <div className="pt-3 border-t border-[#E2D9CE] flex flex-wrap gap-2">
                 <a
-                  href="https://kidsworldbooks.com/buy-books/ols/products/why-juan-cant-sleep-ebook"
+                  href="https://kidsworldbooks.com/buy-books?product=019d6327-7592-70dd-9913-4e54a09bf8da"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="inline-flex items-center gap-1.5 bg-[#0F4C3A] hover:bg-[#0F2238] text-white text-xs px-4 py-2 rounded-lg font-bold transition-colors"

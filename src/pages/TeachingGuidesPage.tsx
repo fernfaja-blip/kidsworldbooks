@@ -55,8 +55,8 @@ const LESSON_PLANS_LIST: LessonPlanItem[] = [
     topic: "Early Reading, Vocabulary & ESL",
     desc: "Counting 1–10 in English and Spanish, spatial concepts, hidden butterfly clues, and deductive reasoning prompts.",
     price: "$2.50 (or Free with Book)",
-    storeUrl: "https://kidsworldbooks.com/buy-books/ols/products/crumbs-on-the-stairs-lesson-plan",
-    bookStoreUrl: "https://kidsworldbooks.com/buy-books/ols/products/crumbs-on-the-stairs-migas-en-las-escaleras-a-mystery-in-spanish-english"
+    storeUrl: "https://kidsworldbooks.com/buy-books?product=01967da2-aafb-7ff9-8bc2-c02a4b20d7df",
+    bookStoreUrl: "https://kidsworldbooks.com/buy-books?product=01967d9b-d0a0-7dd6-9234-fb282059d349"
   },
   {
     title: "She Doesn't Want the Worms – Bilingual Cultural & Vocabulary Unit",
@@ -65,8 +65,8 @@ const LESSON_PLANS_LIST: LessonPlanItem[] = [
     topic: "Early Reading, Vocabulary & ESL",
     desc: "ForeWord Reviews Top 10 bilingual mystery lesson plan covering food traditions, bilingual dialogue, and geography.",
     price: "$2.50 (or Free with Book)",
-    storeUrl: "https://kidsworldbooks.com/buy-books/ols/products/she-doesnt-want-the-worms-ella-no-quiere-los-gusanos-lesson-plan",
-    bookStoreUrl: "https://kidsworldbooks.com/buy-books/ols/products/she-doesnt-want-the-worms-ella-no-quiere-los-gusanos"
+    storeUrl: "https://kidsworldbooks.com/buy-books?product=019d632d-ec72-7018-a320-ede4f7dd0cad",
+    bookStoreUrl: "https://kidsworldbooks.com/buy-books?product=019ce813-7df4-72ca-82a6-7b24960b2e7e"
   },
   {
     title: "The Bridge of the Golden Wood – Financial Literacy & Economics Unit",
@@ -75,8 +75,8 @@ const LESSON_PLANS_LIST: LessonPlanItem[] = [
     topic: "SEL & Communication",
     desc: "Selected by the State of Vermont for primary school curriculum. Teaches goods, services, trade, value creation, and career awareness.",
     price: "$2.50 (or Free with Book)",
-    storeUrl: "https://kidsworldbooks.com/buy-books/ols/products/bridge-of-the-golden-wood-lesson-plan",
-    bookStoreUrl: "https://kidsworldbooks.com/buy-books/ols/products/the-bridge-of-the-golden-wood-a-parable-on-how-to-earn-a-living"
+    storeUrl: "https://kidsworldbooks.com/buy-books?product=0195025a-6dfc-7eee-90ca-f66655d5a144",
+    bookStoreUrl: "https://kidsworldbooks.com/buy-books?product=019d0cf6-347e-743c-ae94-5cc5a98b932f"
   },
   {
     title: "GROW: How We Get Food from Our Garden – STEM & Nutrition Guide",
@@ -85,8 +85,8 @@ const LESSON_PLANS_LIST: LessonPlanItem[] = [
     topic: "STEM, Nature & Food",
     desc: "Selected by USDA (via Virginia Tech), Library of Congress, and Georgia Farm Bureau. Covers plant life cycles, photosynthesis, and healthy recipes.",
     price: "$2.50 (or Free with Book)",
-    storeUrl: "https://kidsworldbooks.com/buy-books/ols/products/grow-lesson-plan",
-    bookStoreUrl: "https://kidsworldbooks.com/buy-books/ols/products/grow-how-we-get-food-from-our-garden"
+    storeUrl: "https://kidsworldbooks.com/buy-books?product=019d6327-989e-7154-bab3-0072fb1c65b7",
+    bookStoreUrl: "https://kidsworldbooks.com/buy-books?product=019cbffd-0751-76f4-b362-bdc82fef1693"
   },
   {
     title: "Bright Star, Night Star: An Astronomy Story – Space & Sky Unit",
@@ -95,8 +95,8 @@ const LESSON_PLANS_LIST: LessonPlanItem[] = [
     topic: "STEM, Nature & Food",
     desc: "Introduces stars, constellations, planets, and night sky observation paired with hands-on astronomy classroom prompts.",
     price: "$2.50 (or Free with Book)",
-    storeUrl: "https://kidsworldbooks.com/buy-books/ols/products/bright-star-night-star-lesson-plan",
-    bookStoreUrl: "https://kidsworldbooks.com/buy-books/ols/products/bright-star-night-star-an-astronomy-story"
+    storeUrl: "https://kidsworldbooks.com/buy-books?product=019d6327-9d02-74f3-9fcf-70123c57beb4",
+    bookStoreUrl: "https://kidsworldbooks.com/buy-books?product=019cbb21-e07e-730f-bd8d-e850a2f8de83"
   },
   {
     title: "Gopher Golf – Wordless Storytelling & Oral Language Unit",
@@ -105,8 +105,8 @@ const LESSON_PLANS_LIST: LessonPlanItem[] = [
     topic: "Wordless Storytelling & Oral Language",
     desc: "Scaffolded prompts for oral narration, creative writing, sequence mapping, and ESL vocabulary building without decoding barriers.",
     price: "$2.50 (or Free with Book)",
-    storeUrl: "https://kidsworldbooks.com/buy-books/ols/products/gopher-golf-lesson-plan",
-    bookStoreUrl: "https://kidsworldbooks.com/buy-books/ols/products/gopher-golf-a-wordless-picture-book"
+    storeUrl: "https://kidsworldbooks.com/buy-books?product=019d6328-7aaf-7272-9de8-0dfdc9678048",
+    bookStoreUrl: "https://kidsworldbooks.com/buy-books?product=019c90ec-a3b7-777c-a2c0-4b1f853f3116"
   },
   {
     title: "Butterfly Blink – Wordless Nature & Observation Lesson Plan",
@@ -115,8 +115,8 @@ const LESSON_PLANS_LIST: LessonPlanItem[] = [
     topic: "Wordless Storytelling & Oral Language",
     desc: "Visual literacy, butterfly life cycles, descriptive adjectives, and student story-authoring exercises.",
     price: "$2.50 (or Free with Book)",
-    storeUrl: "https://kidsworldbooks.com/buy-books/ols/products/butterfly-blink-lesson-plan",
-    bookStoreUrl: "https://kidsworldbooks.com/buy-books/ols/products/butterfly-blink-a-wordless-picture-book"
+    storeUrl: "https://kidsworldbooks.com/buy-books?product=019d632d-f61d-711e-97b5-fd0957b55ccc",
+    bookStoreUrl: "https://kidsworldbooks.com/buy-books?product=019cb58f-a76e-76ba-8cd4-5d0d6d13d77b"
   },
   {
     title: "Polar Bear Bowler – Wordless Sports & Action Verbs Guide",
@@ -125,8 +125,8 @@ const LESSON_PLANS_LIST: LessonPlanItem[] = [
     topic: "Wordless Storytelling & Oral Language",
     desc: "Praised by Publisher's Weekly! Action verbs, cause-and-effect sequencing, and arctic animal habitat discussion.",
     price: "$2.50 (or Free with Book)",
-    storeUrl: "https://kidsworldbooks.com/buy-books/ols/products/polar-bear-bowler-lesson-plan",
-    bookStoreUrl: "https://kidsworldbooks.com/buy-books/ols/products/polar-bear-bowler-a-story-without-words"
+    storeUrl: "https://kidsworldbooks.com/buy-books?product=019d632d-f22f-71af-92de-446ed2b70c13",
+    bookStoreUrl: "https://kidsworldbooks.com/buy-books?product=019d632c-57ef-71b8-861a-adc52cf9c1be"
   },
   {
     title: "Bad Bananas: A Story Cookbook for Kids – Kitchen Math & Health Unit",
@@ -135,8 +135,8 @@ const LESSON_PLANS_LIST: LessonPlanItem[] = [
     topic: "STEM, Nature & Food",
     desc: "Praised by The Horn Book! Fraction measurements, food Ripening science, reducing food waste, and easy classroom recipes.",
     price: "$2.50 (or Free with Book)",
-    storeUrl: "https://kidsworldbooks.com/buy-books/ols/products/bad-bananas-lesson-plan",
-    bookStoreUrl: "https://kidsworldbooks.com/buy-books/ols/products/bad-bananas-a-story-cookbook-for-kids"
+    storeUrl: "https://kidsworldbooks.com/buy-books?product=019d6327-6e2e-72b1-8d8e-d26743b4a406",
+    bookStoreUrl: "https://kidsworldbooks.com/buy-books?product=019d6328-7388-73ba-80af-3baf09bfed34"
   },
   {
     title: "Agnes's Rescue: Biography of an Immigrant Girl – US History Unit",
@@ -145,8 +145,8 @@ const LESSON_PLANS_LIST: LessonPlanItem[] = [
     topic: "Geography, History & Cultures",
     desc: "True 1856 pioneer handcart journey from Scotland to Utah. Primary source empathy, US westward expansion, and resilience.",
     price: "$2.50 (or Free with Book)",
-    storeUrl: "https://kidsworldbooks.com/buy-books/ols/products/agness-rescue-lesson-plan",
-    bookStoreUrl: "https://kidsworldbooks.com/buy-books/ols/products/agness-rescue-biography-of-an-immigrant-girl"
+    storeUrl: "https://kidsworldbooks.com/buy-books?product=019d632b-00cf-74e7-a06f-3e8e6d47cb63",
+    bookStoreUrl: "https://kidsworldbooks.com/buy-books?product=019cb585-67c9-703a-ac20-242f8eaee2ad"
   },
   {
     title: "Samuel Sailing: True Story of an Immigrant Boy – Geography & History",
@@ -155,8 +155,8 @@ const LESSON_PLANS_LIST: LessonPlanItem[] = [
     topic: "Geography, History & Cultures",
     desc: "Follows a young boy's 19th-century ocean voyage from England to New Orleans and up the Mississippi River using 7 modes of transport.",
     price: "$2.50 (or Free with Book)",
-    storeUrl: "https://kidsworldbooks.com/buy-books/ols/products/samuel-sailing-lesson-plan",
-    bookStoreUrl: "https://kidsworldbooks.com/buy-books/ols/products/samuel-sailing-the-true-story-of-an-immigrant-boy"
+    storeUrl: "https://kidsworldbooks.com/buy-books?product=019d632a-4916-763a-9d00-6c08d15d0ac1",
+    bookStoreUrl: "https://kidsworldbooks.com/buy-books?product=01951bba-f31d-7001-ae01-00c167a03c08"
   },
   {
     title: "Anna's Prayer: True Story of an Immigrant Girl – European Immigration",
@@ -165,8 +165,8 @@ const LESSON_PLANS_LIST: LessonPlanItem[] = [
     topic: "Geography, History & Cultures",
     desc: "Explores Swedish immigration to America, family courage, cultural traditions, and historical geography.",
     price: "$2.50 (or Free with Book)",
-    storeUrl: "https://kidsworldbooks.com/buy-books/ols/products/annas-prayer-lesson-plan",
-    bookStoreUrl: "https://kidsworldbooks.com/buy-books/ols/products/annas-prayer-the-true-story-of-an-immigrant-girl"
+    storeUrl: "https://kidsworldbooks.com/buy-books?product=019d6328-7549-71dc-84eb-0968f0c27f7d",
+    bookStoreUrl: "https://kidsworldbooks.com/buy-books?product=01951bb9-fd4a-7001-ac6c-99b67d73c470"
   },
   {
     title: "It Ain't Flat: A Memorizable Book of Countries – World Geography Guide",
@@ -175,8 +175,8 @@ const LESSON_PLANS_LIST: LessonPlanItem[] = [
     topic: "Geography, History & Cultures",
     desc: "Rhyming mnemonic geography guide helping students memorize continents, nations, and world capitals.",
     price: "$2.50 (or Free with Book)",
-    storeUrl: "https://kidsworldbooks.com/buy-books/ols/products/it-aint-flat-lesson-plan",
-    bookStoreUrl: "https://kidsworldbooks.com/buy-books/ols/products/it-aint-flat-a-memorizable-book-of-countries"
+    storeUrl: "https://kidsworldbooks.com/buy-books?product=0195025a-6dfc-7eee-90ca-f66655d5a144",
+    bookStoreUrl: "https://kidsworldbooks.com/buy-books?product=0195ca02-4489-7445-97ab-3f56314e44b1"
   },
   {
     title: "Great Cape o' Colors – Career Exploration & Self-Worth Unit",
@@ -185,8 +185,8 @@ const LESSON_PLANS_LIST: LessonPlanItem[] = [
     topic: "SEL & Communication",
     desc: "Color recognition, community helper professions, and recognizing each child's unique talents.",
     price: "$2.50 (or Free with Book)",
-    storeUrl: "https://kidsworldbooks.com/buy-books/ols/products/great-cape-o-colors-lesson-plan",
-    bookStoreUrl: "https://kidsworldbooks.com/buy-books/ols/products/great-cape-o-colors-career-costumes-for-kids"
+    storeUrl: "https://kidsworldbooks.com/buy-books?product=019d6327-9c80-7349-bf65-babf6bd39dc4",
+    bookStoreUrl: "https://kidsworldbooks.com/buy-books?product=019d0c65-d9ba-73f6-b38e-cec839eb2fba"
   },
   {
     title: "Sounds in the House – Overcoming Bedtime Fear & SEL Guide",
@@ -195,8 +195,8 @@ const LESSON_PLANS_LIST: LessonPlanItem[] = [
     topic: "SEL & Communication",
     desc: "Praised by Kirkus Reviews! Onomatopoeia sound words, critical thinking vs. fear of the dark, and calming bedtime discussion.",
     price: "$2.50 (or Free with Book)",
-    storeUrl: "https://kidsworldbooks.com/buy-books/ols/products/sounds-in-the-house-lesson-plan",
-    bookStoreUrl: "https://kidsworldbooks.com/buy-books/ols/products/sounds-in-the-house-a-mystery"
+    storeUrl: "https://kidsworldbooks.com/buy-books?product=019d6328-7f30-700d-bdb9-e4b5129a1fb7",
+    bookStoreUrl: "https://kidsworldbooks.com/buy-books?product=01951bb9-90d5-7002-8496-c283fa0b01a0"
   },
   {
     title: "The Case of the Missing Carrot Cake – Detective Comprehension Unit",
@@ -205,8 +205,8 @@ const LESSON_PLANS_LIST: LessonPlanItem[] = [
     topic: "Early Reading, Vocabulary & ESL",
     desc: "Inference, predicting outcomes, character motives, and Farm detective vocabulary for early chapter readers.",
     price: "$2.50 (or Free with Book)",
-    storeUrl: "https://kidsworldbooks.com/buy-books/ols/products/missing-carrot-cake-lesson-plan",
-    bookStoreUrl: "https://kidsworldbooks.com/buy-books/ols/products/the-case-of-the-missing-carrot-cake-a-wilcox-and-griswold-mystery"
+    storeUrl: "https://kidsworldbooks.com/buy-books?product=019d6328-7ee5-74f6-9171-50e50387b10d",
+    bookStoreUrl: "https://kidsworldbooks.com/buy-books?product=01951bb9-90d5-7002-8496-c283fa0b01a0"
   }
 ];
 

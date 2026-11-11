@@ -1,5 +1,5 @@
 import React, { useState, useMemo, useEffect } from 'react';
-import { useSearchParams, Link } from 'react-router-dom';
+import { useSearchParams } from 'react-router-dom';
 import { BOOKS_DATA, Book } from '../data/books';
 import { BookCard } from '../components/BookCard';
 import { Breadcrumbs } from '../components/Breadcrumbs';
@@ -29,7 +29,8 @@ const FORMAT_OPTIONS = [
   "Hardcover",
   "Ebook",
   "Bundles & Series",
-  "Free Ebooks"
+  "Free Ebooks",
+  "Lesson Plans & Curricula"
 ];
 
 export const BuyBooksPage: React.FC<BuyBooksPageProps> = ({ onSelectBook }) => {
@@ -48,12 +49,19 @@ export const BuyBooksPage: React.FC<BuyBooksPageProps> = ({ onSelectBook }) => {
     const level = searchParams.get('readerLevel');
     const theme = searchParams.get('theme');
     const format = searchParams.get('format');
+    const productParam = searchParams.get('product');
 
     if (search !== null) setSearchQuery(search);
     if (level) setSelectedReaderLevels([level]);
     if (theme) setSelectedThemes([theme]);
     if (format) setSelectedFormats([format]);
-  }, [searchParams]);
+    if (productParam) {
+      const matchedBook = BOOKS_DATA.find((b) => b.commerceId === productParam || b.id === productParam || b.slug === productParam);
+      if (matchedBook) {
+        onSelectBook(matchedBook);
+      }
+    }
+  }, [searchParams, onSelectBook]);
 
   const toggleFilter = (item: string, state: string[], setState: React.Dispatch<React.SetStateAction<string[]>>) => {
     if (state.includes(item)) {
@@ -127,19 +135,19 @@ export const BuyBooksPage: React.FC<BuyBooksPageProps> = ({ onSelectBook }) => {
         <div className="flex flex-col lg:flex-row lg:items-center justify-between gap-4">
           <div className="space-y-1.5">
             <span className="text-xs font-bold uppercase tracking-wider text-[#C2410C]">
-              Official KidsWorldBooks Store Catalog • Ages 2–14+
+              Official KidsWorldBooks Store Catalog • Ages 2–15+
             </span>
             <h1 className="font-editorial text-3xl sm:text-4xl font-bold text-[#0F2238]">
-              Order Multicultural Children’s Books Online
+              Order Award-Winning Kids’ Books Online
             </h1>
             <p className="text-xs sm:text-sm text-[#475569] max-w-3xl leading-relaxed">
-              Shop multicultural, bilingual English–Spanish, STEM, phonics, wordless, and chapter books. Every product links directly to complete checkout on <strong>KidsWorldBooks.com</strong>.
+              US & Canada orders ship direct. Others order via Amazon, Apple, B&N, Ingram, Follett, Hertzberg, Target, or Walmart. Prices are for individuals and nonprofits. Click <strong>Buy Now</strong> on any product to complete your purchase directly on <strong>KidsWorldBooks.com</strong>.
             </p>
           </div>
 
           <div className="flex flex-wrap items-center gap-3 shrink-0">
             <a
-              href="https://kidsworldbooks.com/buy-books/ols/products/retail-catalog"
+              href="https://kidsworldbooks.com/buy-books?product=0194b86e-346b-7335-a1f2-b022dad0e62f"
               target="_blank"
               rel="noopener noreferrer"
               className="inline-flex items-center gap-1.5 bg-[#FAF7F2] hover:bg-[#E2D9CE]/50 text-[#0F2238] border border-[#E2D9CE] px-3.5 py-2 rounded-lg text-xs font-semibold transition-colors"
@@ -150,13 +158,13 @@ export const BuyBooksPage: React.FC<BuyBooksPageProps> = ({ onSelectBook }) => {
             </a>
 
             <a
-              href="https://kidsworldbooks.com/buy-books?olsPage=cart"
+              href="https://kidsworldbooks.com/buy-books"
               target="_blank"
               rel="noopener noreferrer"
               className="inline-flex items-center gap-1.5 bg-[#0F2238] hover:bg-[#0F4C3A] text-white px-4 py-2 rounded-lg text-xs font-bold transition-colors shadow-xs"
             >
               <ShoppingCart className="w-3.5 h-3.5" />
-              <span>View Cart on KidsWorldBooks.com</span>
+              <span>Official Store & Cart</span>
               <ExternalLink className="w-3 h-3 opacity-80" />
             </a>
           </div>
@@ -167,11 +175,11 @@ export const BuyBooksPage: React.FC<BuyBooksPageProps> = ({ onSelectBook }) => {
           <div className="flex items-center gap-2">
             <Gift className="w-4 h-4 text-[#C2410C] shrink-0" />
             <span>
-              <strong>Free Bonus:</strong> We send a <strong>FREE ebook or lesson plan</strong> with every hard/soft book purchased!
+              <strong>Free Bonus:</strong> Includes a <strong>FREE ebook or lesson plan</strong> with every hard/soft book purchased!
             </span>
           </div>
           <div className="text-[11px] text-[#64748B]">
-            US & Canada direct (others via Amazon, Apple, B&N, Ingram, Follett, Target, Walmart).
+            167 verified titles, 4-book bundles, ebooks & K–10 lesson plans.
           </div>
         </div>
 
@@ -180,7 +188,7 @@ export const BuyBooksPage: React.FC<BuyBooksPageProps> = ({ onSelectBook }) => {
           <div className="relative flex-1">
             <input
               type="text"
-              placeholder="Search 60+ titles, bilingual books, 4-book bundles, ISBN, or topic..."
+              placeholder="Search by title, topic, age/grade, or ISBN..."
               value={searchQuery}
               onChange={(e) => setSearchQuery(e.target.value)}
               className="w-full bg-[#FAF7F2] border border-[#E2D9CE] rounded-xl py-3 pl-11 pr-4 text-sm text-[#0F2238] placeholder-[#94A3B8] focus:outline-none focus:ring-2 focus:ring-[#0F2238]"
@@ -222,7 +230,7 @@ export const BuyBooksPage: React.FC<BuyBooksPageProps> = ({ onSelectBook }) => {
                   className="text-xs text-[#C2410C] hover:underline flex items-center gap-1 font-medium"
                 >
                   <RotateCcw className="w-3 h-3" />
-                  <span>Reset</span>
+                  <span>Clear all</span>
                 </button>
               )}
             </div>
@@ -290,30 +298,26 @@ export const BuyBooksPage: React.FC<BuyBooksPageProps> = ({ onSelectBook }) => {
               </div>
             </div>
 
-            {/* Direct Store Categories on KidsWorldBooks.com */}
+            {/* Direct Store Sections on KidsWorldBooks.com */}
             <div className="space-y-2 border-t border-[#E2D9CE] pt-4">
               <h3 className="text-[11px] font-bold uppercase tracking-wider text-[#64748B]">
-                Direct Checkout Categories
+                Official Store Sections
               </h3>
               <div className="flex flex-col gap-1.5 text-xs">
-                <a href="https://kidsworldbooks.com/buy-books/ols/categories/reading-level" target="_blank" rel="noopener noreferrer" className="text-[#0F4C3A] hover:underline flex items-center justify-between">
-                  <span>Early Reading (K–2)</span>
+                <a href="https://kidsworldbooks.com/buy-books#level" target="_blank" rel="noopener noreferrer" className="text-[#0F4C3A] hover:underline flex items-center justify-between">
+                  <span>By Reader / Level</span>
                   <ExternalLink className="w-3 h-3" />
                 </a>
-                <a href="https://kidsworldbooks.com/buy-books/ols/categories/bilingual-spanish" target="_blank" rel="noopener noreferrer" className="text-[#0F4C3A] hover:underline flex items-center justify-between">
-                  <span>Bilingual Spanish & ESL</span>
+                <a href="https://kidsworldbooks.com/buy-books#theme" target="_blank" rel="noopener noreferrer" className="text-[#0F4C3A] hover:underline flex items-center justify-between">
+                  <span>By Theme & Topic</span>
                   <ExternalLink className="w-3 h-3" />
                 </a>
-                <a href="https://kidsworldbooks.com/buy-books/ols/categories/STEM-nonfiction" target="_blank" rel="noopener noreferrer" className="text-[#0F4C3A] hover:underline flex items-center justify-between">
-                  <span>Nonfiction, STEM & Careers</span>
+                <a href="https://kidsworldbooks.com/buy-books#bundles" target="_blank" rel="noopener noreferrer" className="text-[#0F4C3A] hover:underline flex items-center justify-between">
+                  <span>Bundles, Series & Ebooks</span>
                   <ExternalLink className="w-3 h-3" />
                 </a>
-                <a href="https://kidsworldbooks.com/buy-books/ols/categories/series" target="_blank" rel="noopener noreferrer" className="text-[#0F4C3A] hover:underline flex items-center justify-between">
-                  <span>Book Bundles & Series</span>
-                  <ExternalLink className="w-3 h-3" />
-                </a>
-                <a href="https://kidsworldbooks.com/buy-books/ols/categories/teacher-guides" target="_blank" rel="noopener noreferrer" className="text-[#0F4C3A] hover:underline flex items-center justify-between">
-                  <span>Teacher Guides / Lesson Plans</span>
+                <a href="https://kidsworldbooks.com/buy-books?product=0195025a-61d8-7bbf-bc78-46a4a71e3606" target="_blank" rel="noopener noreferrer" className="text-[#0F4C3A] hover:underline flex items-center justify-between">
+                  <span>School / Library Catalog</span>
                   <ExternalLink className="w-3 h-3" />
                 </a>
               </div>
@@ -326,7 +330,7 @@ export const BuyBooksPage: React.FC<BuyBooksPageProps> = ({ onSelectBook }) => {
         <main className="lg:col-span-9 space-y-6">
           
           <div className="flex items-center justify-between text-xs text-[#64748B]">
-            <span>Showing <strong>{filteredBooks.length}</strong> of <strong>{BOOKS_DATA.length}</strong> verified catalog products</span>
+            <span>Showing <strong>{filteredBooks.length}</strong> of <strong>{BOOKS_DATA.length}</strong> titles in catalog</span>
             {hasActiveFilters && (
               <span className="text-[#C2410C] font-semibold">Active Filter Combination Applied</span>
             )}
@@ -351,7 +355,7 @@ export const BuyBooksPage: React.FC<BuyBooksPageProps> = ({ onSelectBook }) => {
                 onClick={resetAllFilters}
                 className="bg-[#0F2238] text-white px-5 py-2.5 rounded-lg text-xs font-semibold hover:bg-[#0F4C3A] transition-colors"
               >
-                Reset All Filters
+                Clear Filters
               </button>
             </div>
           )}

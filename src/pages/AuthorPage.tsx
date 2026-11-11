@@ -55,7 +55,7 @@ export const AuthorPage: React.FC = () => {
               Book Author School Visit / Speaking →
             </Link>
             <a
-              href="https://kidsworldbooks.com/buy-books/ols/products/publishing-consultation-with-karl-beckstrand"
+              href="https://kidsworldbooks.com/buy-books?product=019d632c-5fa8-76c8-89ed-d93a25c4cb99"
               target="_blank"
               rel="noopener noreferrer"
               className="bg-[#C2410C] hover:bg-[#9A3412] text-white text-xs font-bold px-5 py-2.5 rounded-lg transition-colors inline-flex items-center gap-1.5"
@@ -104,7 +104,7 @@ export const AuthorPage: React.FC = () => {
             Get personalized guidance on manuscript editing, children's book illustration layout, ISBN/library distribution, bilingual publishing, and book marketing from a 20-year indie publishing veteran ($165/hour).
           </p>
           <a
-            href="https://kidsworldbooks.com/buy-books/ols/products/publishing-consultation-with-karl-beckstrand"
+            href="https://kidsworldbooks.com/buy-books?product=019d632c-5fa8-76c8-89ed-d93a25c4cb99"
             target="_blank"
             rel="noopener noreferrer"
             className="inline-flex items-center gap-1.5 text-xs font-bold text-[#C2410C] hover:underline pt-1"

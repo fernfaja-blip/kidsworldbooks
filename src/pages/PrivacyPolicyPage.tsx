@@ -35,7 +35,7 @@ export const PrivacyPolicyPage: React.FC = () => {
             Discounted book and bundle prices on KidsWorldBooks.com are offered for families, teachers, schools, libraries, and non-profit literacy programs. Commercial book resellers should order through Ingram or view our official Retail Catalog.
           </p>
           <a
-            href="https://kidsworldbooks.com/buy-books/ols/products/retail-catalog"
+            href="https://kidsworldbooks.com/buy-books?product=0194b86e-346b-7335-a1f2-b022dad0e62f"
             target="_blank"
             rel="noopener noreferrer"
             className="inline-flex items-center gap-1 text-xs font-bold text-[#C2410C] hover:underline pt-1"

@@ -8,6 +8,12 @@ interface BookCardProps {
 }
 
 export const BookCard: React.FC<BookCardProps> = ({ book, onSelectBook }) => {
+  const formattedPrice = book.isFree
+    ? 'FREE'
+    : book.priceMax && book.priceMax > book.price
+    ? `$${book.price.toFixed(2)} – $${book.priceMax.toFixed(2)}`
+    : `$${book.price.toFixed(2)}`;
+
   return (
     <div className="editorial-card rounded-xl overflow-hidden flex flex-col h-full border border-[#E2D9CE] bg-white group">
       
@@ -29,7 +35,7 @@ export const BookCard: React.FC<BookCardProps> = ({ book, onSelectBook }) => {
         {/* Free Badge / Format Overlay */}
         {book.isFree ? (
           <span className="absolute top-3 left-3 bg-[#0F4C3A] text-white text-xs font-bold px-2.5 py-1 rounded-md shadow-sm">
-            FREE EBOOK
+            FREE
           </span>
         ) : (
           <span className="absolute top-3 left-3 bg-[#0F2238]/90 backdrop-blur-xs text-white text-[11px] font-semibold px-2 py-0.5 rounded shadow-xs">
@@ -45,7 +51,7 @@ export const BookCard: React.FC<BookCardProps> = ({ book, onSelectBook }) => {
                 ${book.originalPrice.toFixed(2)}
               </span>
             )}
-            <span>${book.price.toFixed(2)}</span>
+            <span>{formattedPrice}</span>
           </div>
         )}
       </div>
@@ -86,7 +92,7 @@ export const BookCard: React.FC<BookCardProps> = ({ book, onSelectBook }) => {
             <span className="text-[#94A3B8] shrink-0">Language:</span>
             <span className="font-medium text-[#0F2238] text-right truncate">{book.language}</span>
           </div>
-          {book.isbn && book.isbn !== "Verified Direct Store Edition" && (
+          {book.isbn && book.isbn !== "Premio Publishing Direct" && (
             <div className="flex justify-between gap-2">
               <span className="text-[#94A3B8] shrink-0">ISBN:</span>
               <span className="font-mono text-[11px] text-[#0F4C3A] text-right truncate">{book.isbn}</span>
@@ -116,10 +122,10 @@ export const BookCard: React.FC<BookCardProps> = ({ book, onSelectBook }) => {
             target="_blank"
             rel="noopener noreferrer"
             className="bg-[#C2410C] hover:bg-[#9A3412] text-white py-2 px-2.5 rounded-lg text-xs font-bold transition-colors flex items-center justify-center gap-1.5 shadow-xs"
-            title={`Complete purchase of ${book.title} on KidsWorldBooks.com`}
+            title={`Buy ${book.title} directly on KidsWorldBooks.com`}
           >
             <ShoppingCart className="w-3.5 h-3.5 shrink-0" />
-            <span>{book.isFree ? "Get Free" : "Buy Now"}</span>
+            <span>Buy Now</span>
             <ExternalLink className="w-3 h-3 opacity-80 shrink-0" />
           </a>
         </div>

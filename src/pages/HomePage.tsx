@@ -15,7 +15,18 @@ export const HomePage: React.FC<HomePageProps> = ({ onSelectBook }) => {
   const [email, setEmail] = useState('');
   const [subscribed, setSubscribed] = useState(false);
 
-  const featuredBooks = BOOKS_DATA.slice(0, 6);
+  const featuredSlugs = [
+    'she-doesnt-want-the-worms-ella-no-quiere-los-gusanos',
+    'crumbs-on-the-stairs-migas-en-las-escaleras-a-mystery-in-spanish-english',
+    'bright-star-night-star-an-astronomy-story',
+    '4-stories-of-immigrant-kids',
+    'horse-dog-adventures-in-early-california-short-stories-poems',
+    'to-swallow-the-earth-western'
+  ];
+  const featuredBooks = [
+    ...featuredSlugs.map((s) => BOOKS_DATA.find((b) => b.slug === s)).filter((b): b is Book => Boolean(b)),
+    ...BOOKS_DATA
+  ].slice(0, 6);
   const america250Books = BOOKS_DATA.filter((b) =>
     ['4-stories-of-immigrant-kids', 'agness-rescue-biography-of-an-immigrant-girl', 'samuel-sailing-the-true-story-of-an-immigrant-boy', 'horse-dog-adventures-in-early-california-short-stories-poems'].includes(b.slug)
   );
@@ -299,7 +310,7 @@ export const HomePage: React.FC<HomePageProps> = ({ onSelectBook }) => {
             to="/buy-books"
             className="inline-flex items-center gap-2 text-sm font-bold text-[#0F2238] hover:text-[#C2410C] transition-colors"
           >
-            <span>See All 60+ Kids World Books</span>
+            <span>See All 167 Catalog Titles & Resources</span>
             <ArrowRight className="w-4 h-4" />
           </Link>
         </div>
@@ -518,7 +529,7 @@ export const HomePage: React.FC<HomePageProps> = ({ onSelectBook }) => {
 
           <div className="flex flex-col sm:flex-row gap-4 shrink-0 w-full lg:w-auto">
             <a
-              href="https://kidsworldbooks.com/buy-books/ols/products/retail-catalog"
+              href="https://kidsworldbooks.com/buy-books?product=0194b86e-346b-7335-a1f2-b022dad0e62f"
               target="_blank"
               rel="noopener noreferrer"
               className="bg-[#C2410C] hover:bg-[#9A3412] text-white text-center py-3.5 px-6 rounded-xl font-bold text-sm transition-colors"

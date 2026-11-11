@@ -89,7 +89,7 @@ export const AboutPage: React.FC = () => {
           </div>
           <div className="flex flex-wrap gap-3 shrink-0">
             <a
-              href="https://kidsworldbooks.com/buy-books/ols/products/retail-catalog"
+              href="https://kidsworldbooks.com/buy-books?product=0194b86e-346b-7335-a1f2-b022dad0e62f"
               target="_blank"
               rel="noopener noreferrer"
               className="bg-white border border-[#E2D9CE] text-[#0F2238] text-xs font-bold px-4 py-2 rounded-lg hover:bg-slate-100 transition-colors inline-flex items-center gap-1.5"

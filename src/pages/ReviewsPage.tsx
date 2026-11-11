@@ -8,37 +8,37 @@ const EDITORIAL_REVIEWS = [
     outlet: "Publisher’s Weekly",
     book: "Polar Bear Bowler: A Story Without Words",
     quote: "“Charming... full of polish and physical comedy.”",
-    storeUrl: "https://kidsworldbooks.com/buy-books/ols/products/polar-bear-bowler-a-story-without-words"
+    storeUrl: "https://kidsworldbooks.com/buy-books?product=019d632c-57ef-71b8-861a-adc52cf9c1be"
   },
   {
     outlet: "The Horn Book",
     book: "Bad Bananas: A Story Cookbook for Kids",
     quote: "“An engaging, practical story cookbook that turns kitchen mishaps into delicious learning.”",
-    storeUrl: "https://kidsworldbooks.com/buy-books/ols/products/bad-bananas-a-story-cookbook-for-kids"
+    storeUrl: "https://kidsworldbooks.com/buy-books?product=019d6328-7388-73ba-80af-3baf09bfed34"
   },
   {
     outlet: "Kirkus Reviews",
     book: "Sounds in the House: A Mystery",
     quote: "“Suspenseful without getting too intense for early readers... a warm nocturnal mystery.”",
-    storeUrl: "https://kidsworldbooks.com/buy-books/ols/products/sounds-in-the-house-a-mystery"
+    storeUrl: "https://kidsworldbooks.com/buy-books?product=01951bb9-90d5-7002-8496-c283fa0b01a0"
   },
   {
     outlet: "School Library Journal & School Library Connection",
     book: "She Doesn't Want the Worms / Ella no quiere los gusanos",
     quote: "“Delightful... humorous... bright. A lively bilingual mystery celebrating cultural discovery.”",
-    storeUrl: "https://kidsworldbooks.com/buy-books/ols/products/she-doesnt-want-the-worms-ella-no-quiere-los-gusanos"
+    storeUrl: "https://kidsworldbooks.com/buy-books?product=019ce813-7df4-72ca-82a6-7b24960b2e7e"
   },
   {
     outlet: "ForeWord Reviews (Top 10 Spanish Twist)",
     book: "She Doesn't Want the Worms & Crumbs on the Stairs",
     quote: "“Beckstrand has a knack for creating simple, relatable mysteries with a twist that keeps young bilingual readers guessing.”",
-    storeUrl: "https://kidsworldbooks.com/buy-books/ols/products/crumbs-on-the-stairs-migas-en-las-escaleras-a-mystery-in-spanish-english"
+    storeUrl: "https://kidsworldbooks.com/buy-books?product=01967d9b-d0a0-7dd6-9234-fb282059d349"
   },
   {
     outlet: "International Book Awards & Skipping Stones Honor",
     book: "The Bridge of the Golden Wood & Young American Immigrants Series",
     quote: "“Recognized for excellence in multicultural, historical, and financial literacy storytelling for youth.”",
-    storeUrl: "https://kidsworldbooks.com/buy-books/ols/products/the-bridge-of-the-golden-wood-a-parable-on-how-to-earn-a-living"
+    storeUrl: "https://kidsworldbooks.com/buy-books?product=019d0cf6-347e-743c-ae94-5cc5a98b932f"
   }
 ];
 
