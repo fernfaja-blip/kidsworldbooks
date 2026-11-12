@@ -6,6 +6,7 @@ import {
   BookOpen, Sparkles, ArrowRight, Download, 
   Users, Building2, Heart, CheckCircle2, FileText, Globe, Star, Flag, Mail
 } from 'lucide-react';
+import { submitToGoogleSheet } from '../utils/submitToGoogleSheet';
 
 interface HomePageProps {
   onSelectBook: (book: Book) => void;
@@ -31,9 +32,17 @@ export const HomePage: React.FC<HomePageProps> = ({ onSelectBook }) => {
     ['4-stories-of-immigrant-kids', 'agness-rescue-biography-of-an-immigrant-girl', 'samuel-sailing-the-true-story-of-an-immigrant-boy', 'horse-dog-adventures-in-early-california-short-stories-poems'].includes(b.slug)
   );
 
-  const handleGuideSignup = (e: React.FormEvent) => {
+  const handleGuideSignup = async (e: React.FormEvent) => {
     e.preventDefault();
     if (email.trim()) {
+      await submitToGoogleSheet({
+        formType: 'Suscripción Guías (/)',
+        fullName: '-',
+        email: email.trim(),
+        organization: '-',
+        topic: 'Free STEM + Literacy Lesson Plans for K–10',
+        message: 'Subscribed from Home Page lead block',
+      });
       setSubscribed(true);
     }
   };

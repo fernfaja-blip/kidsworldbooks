@@ -1,12 +1,29 @@
 import React, { useState } from 'react';
 import { Breadcrumbs } from '../components/Breadcrumbs';
 import { Mail, MapPin, Building2, Send, CheckCircle2, Award, Globe } from 'lucide-react';
+import { submitToGoogleSheet } from '../utils/submitToGoogleSheet';
 
 export const ContactPage: React.FC = () => {
   const [submitted, setSubmitted] = useState(false);
+  const [submitting, setSubmitting] = useState(false);
+  const [fullName, setFullName] = useState('');
+  const [email, setEmail] = useState('');
+  const [organization, setOrganization] = useState('');
+  const [topic, setTopic] = useState('Send Me Free K–10 STEM + Literacy Lesson Plans');
+  const [message, setMessage] = useState('');
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
+    setSubmitting(true);
+    await submitToGoogleSheet({
+      formType: 'Contacto (/contact-us)',
+      fullName,
+      email,
+      organization,
+      topic,
+      message,
+    });
+    setSubmitting(false);
     setSubmitted(true);
   };
 
@@ -54,6 +71,8 @@ export const ContactPage: React.FC = () => {
                   <input
                     type="text"
                     required
+                    value={fullName}
+                    onChange={(e) => setFullName(e.target.value)}
                     placeholder="e.g., Sarah Miller"
                     className="w-full bg-[#FAF7F2] border border-[#E2D9CE] rounded-lg p-2.5 text-xs text-[#0F2238]"
                   />
@@ -63,6 +82,8 @@ export const ContactPage: React.FC = () => {
                   <input
                     type="email"
                     required
+                    value={email}
+                    onChange={(e) => setEmail(e.target.value)}
                     placeholder="e.g., smiller@district.edu"
                     className="w-full bg-[#FAF7F2] border border-[#E2D9CE] rounded-lg p-2.5 text-xs text-[#0F2238]"
                   />
@@ -74,13 +95,19 @@ export const ContactPage: React.FC = () => {
                   <label className="block text-xs font-bold text-[#0F2238] mb-1">School / Library / Organization</label>
                   <input
                     type="text"
+                    value={organization}
+                    onChange={(e) => setOrganization(e.target.value)}
                     placeholder="e.g., Washington Elementary"
                     className="w-full bg-[#FAF7F2] border border-[#E2D9CE] rounded-lg p-2.5 text-xs text-[#0F2238]"
                   />
                 </div>
                 <div>
                   <label className="block text-xs font-bold text-[#0F2238] mb-1">Inquiry Topic</label>
-                  <select className="w-full bg-[#FAF7F2] border border-[#E2D9CE] rounded-lg p-2.5 text-xs text-[#0F2238]">
+                  <select
+                    value={topic}
+                    onChange={(e) => setTopic(e.target.value)}
+                    className="w-full bg-[#FAF7F2] border border-[#E2D9CE] rounded-lg p-2.5 text-xs text-[#0F2238]"
+                  >
                     <option>Send Me Free K–10 STEM + Literacy Lesson Plans</option>
                     <option>Claim My Free Ebook / Lesson Plan from a Book Order</option>
                     <option>School / Library Purchase Order (PO) & Bulk Pricing</option>
@@ -96,6 +123,8 @@ export const ContactPage: React.FC = () => {
                 <textarea
                   rows={4}
                   required
+                  value={message}
+                  onChange={(e) => setMessage(e.target.value)}
                   placeholder="Let us know which grade levels you teach, or which free lesson plan/ebook you'd like!"
                   className="w-full bg-[#FAF7F2] border border-[#E2D9CE] rounded-lg p-2.5 text-xs text-[#0F2238]"
                 ></textarea>
@@ -103,10 +132,11 @@ export const ContactPage: React.FC = () => {
 
               <button
                 type="submit"
-                className="w-full bg-[#0F2238] hover:bg-[#0F4C3A] text-white py-3 rounded-lg font-bold text-xs transition-colors flex items-center justify-center gap-2"
+                disabled={submitting}
+                className="w-full bg-[#0F2238] hover:bg-[#0F4C3A] disabled:opacity-60 text-white py-3 rounded-lg font-bold text-xs transition-colors flex items-center justify-center gap-2"
               >
                 <Send className="w-4 h-4" />
-                <span>Send Message / Request Free Lesson Plans</span>
+                <span>{submitting ? 'Sending...' : 'Send Message / Request Free Lesson Plans'}</span>
               </button>
             </form>
           )}
