@@ -11,7 +11,8 @@ export interface SheetSubmissionPayload {
 // con la URL Web App de Apps Script generada en el Google Sheet:
 // https://docs.google.com/spreadsheets/d/1ox86V5b2NBnI_wX2mdPKYdeL1g0KY-BAB5PcT-dDsV8/edit
 export const GOOGLE_SHEETS_WEBHOOK_URL =
-  ((import.meta as unknown as { env?: Record<string, string> }).env?.VITE_GOOGLE_SHEETS_WEBHOOK_URL) || '';
+  ((import.meta as unknown as { env?: Record<string, string> }).env?.VITE_GOOGLE_SHEETS_WEBHOOK_URL) ||
+  'https://script.google.com/macros/s/AKfycbyxKi0pgZQzT2q75UloJixKnqhLxIZP1Vbu_3wXigqbRoroKkW5_EpkKtYl3J-9zI32tg/exec';
 
 export async function submitToGoogleSheet(payload: SheetSubmissionPayload): Promise<void> {
   const timestamp = new Date().toISOString();
