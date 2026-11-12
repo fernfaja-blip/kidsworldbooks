@@ -3,6 +3,7 @@ import { Routes, Route, Navigate } from 'react-router-dom';
 import { Navbar } from './components/Navbar';
 import { Footer } from './components/Footer';
 import { BookDetailModal } from './components/BookDetailModal';
+import { SEOHead } from './components/SEOHead';
 import { Book } from './data/books';
 
 // Pages
@@ -34,6 +35,7 @@ export const App: React.FC = () => {
 
   return (
     <div className="flex flex-col min-h-screen bg-[#FAF7F2]">
+      <SEOHead selectedBook={selectedBook} />
       {/* Header Navigation */}
       <Navbar />
 

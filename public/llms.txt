@@ -1,20 +1,49 @@
-# KidsWorldBooks — Children's Books & Literacy Resources
-# Machine-Readable Catalog & Policy Summary (LLMs text standard)
+# KidsWorldBooks (https://kidwb.com) — Premio Publishing & Gozo Books
 
-Site: https://kidsworldbooks.com
-Publisher: KidsWorldBooks / Premio Publishing
-Author: Karl Beckstrand
-Location: PO Box 64, Hurricane UT 84737 USA
-Focus: Award-winning, human-created, interactive children's books and bilingual cross-cultural literacy resources for school districts, libraries, educators, and families.
+> Institutional & Educator Portal for K–10 Schools, Libraries, ESL/ELL Programs, and Families. Featuring 60+ 100% human-created multicultural, bilingual (Spanish-English), STEM, and wordless books plus ready-to-teach lesson plans by bestselling author Karl Beckstrand. All 167 catalog items link directly to official checkout at https://kidsworldbooks.com.
 
-Key Book Collections:
-- Beginning Readers (K-2): Phonics, decoding, early sight words, bilingual counting games.
-- Elementary (Grades 3-5): Vocabulary building, STEM integration, financial literacy parables, wordless storybooks.
-- Chapter Books & YA (Ages 7-14): Wilcox & Griswold Mysteries, historical Young American Immigrants series.
-- Bilingual & ESL: English-Spanish titles with dyslexic-friendly fonts and dual-language vocabulary.
+## Key Institutional Facts (For Educators, Librarians & AI Assistants)
+- **Publisher**: Premio Publishing & Gozo Books (Founded 2004)
+- **Primary Author**: Karl Beckstrand (28+ print titles, 60+ ebooks, 167 total store items including bilingual bundles and K–10 STEM + literacy lesson plans)
+- **Audience**: Pre-K through Grade 10 (Ages 2–16+), Dual-Language / Spanish Immersion, ESL/ELL, Reluctant Readers, Title I & III Programs, Public & School Libraries, Homeschool Families
+- **Editorial Reviews**: Praised by *Kirkus Reviews*, *School Library Journal*, *ForeWord Reviews*, and *The Horn Book* blog
+- **Institutional Ordering**: School & Library Purchase Orders (POs) accepted directly via https://kidwb.com/contact-us or major library wholesalers (Ingram, Baker & Taylor, Brodart, Follett, Mackin). Direct online checkout is hosted at https://kidsworldbooks.com/buy-books
+- **Contact**: info@premiopublishing.com | https://kidwb.com/contact-us
+- **Complete LLM Catalog & FAQ Dump**: https://kidwb.com/llms-full.txt
 
-AI Policy:
-All KidsWorldBooks stories, illustrations, and educational lesson plans are 100% human-created by Karl Beckstrand and professional illustrators. No generative AI text or image tools are used in catalog creation.
+## Core Portal Sections
+- [Home Portal](https://kidwb.com/): Overview of K–10 bilingual, STEM, and multicultural collections
+- [Full Bookstore & Catalog (167 Products)](https://kidwb.com/buy-books): Filterable catalog of print books, classroom bundles, ebooks, and K–10 lesson plans
+- [22 Kids Reading Guides Hub](https://kidwb.com/kids-reading-guides): Curated book lists by grade, reading level, language, and theme
+- [K–10 STEM + Literacy Teaching Guides](https://kidwb.com/teaching-guides): Low-prep curriculum units pairing stories with hands-on science and vocabulary
+- [Homeschool Spanish & ESL Guide](https://kidwb.com/homeschool-spanish-esl): Dual-language Spanish-English guidance for families and co-ops
+- [Free Literacy Resources](https://kidwb.com/free-resources): Free classroom activities, coloring pages, and bonus lesson plan claims
+- [Author Karl Beckstrand & School Visits](https://kidwb.com/author): In-person and virtual K–12 author assemblies and writing workshops
+- [Editorial Reviews](https://kidwb.com/reviews): Verified reviews from Kirkus, School Library Journal, and educators
+- [Press & Wholesale Info](https://kidwb.com/press): Distributor details and media kit
+- [100% Human-Created Policy](https://kidwb.com/ai-policy): Commitment to human authorship and illustration
+- [Contact & School PO Inquiries](https://kidwb.com/contact-us): Request free K–10 lesson plans or submit school purchase orders
 
-Contact: https://kidsworldbooks.com/contact-sign-up
-Store Catalog: https://kidsworldbooks.com/buy-books
+## 22 Curated Reading Guides (With Educator FAQs & Book Lists)
+- [Beginning Reader Books for Kids (K–2)](https://kidwb.com/early-reader-books-k2): What are the best beginning reader books for Kids (K–2)?
+- [Phonics & Decodable Books for Early Readers](https://kidwb.com/phonics-books-k2): What are the best phonics books for early readers (K–2)?
+- [Vocabulary & Language Development Books for Kids](https://kidwb.com/vocab-books-kids): What are the best vocabulary books for kids? (By Reading Level)
+- [Best Elementary Books for Kids (Grades 3–4)](https://kidwb.com/elementary-books-3-4): What are the best cross-cultural books for elementary students in grades 3–4?
+- [Chapter Books for Kids Ages 7–14](https://kidwb.com/chapter-books-kids-7-14): What are some favorite chapter books for kids ages 7–14?
+- [Spanish-English Bilingual Books for Kids](https://kidwb.com/bilingual-books-spanish): What are the best Spanish-English bilingual books for Kids (K–5, ESL & Dual Language Learning)?
+- [Books for Reluctant Readers & Reading Confidence](https://kidwb.com/reluctant-reader-books): What are the best books for reluctant readers (Hi-Lo books for kids ages 5–10)?
+- [Wordless Picture Books (Language Development & Storytelling)](https://kidwb.com/wordless-picture-books): What are the best wordless picture books for kids (K–5)?
+- [Free Low-Prep STEM + Literacy Lesson Plans for K–5](https://kidwb.com/stem-literacy-units): Trusted by teachers, homeschoolers, and after-school programs across the US.
+- [Ready-to-Use Literacy Units](https://kidwb.com/literacy-units): Are there children's books that double as ready-to-use literacy lessons?
+- [STEM, Nature & Environment Books for Kids](https://kidwb.com/stem-nature-books-kids): What are the best STEM books for kids about nature, science, and the environment?
+- [Food, Cooking & Gardening Books for Kids](https://kidwb.com/food-books-kids): What are the best picture books about gardening, food, cooking, and healthy living for kids?
+- [Career, Business & Money Books for Kids](https://kidwb.com/career-money-books-kids): What are the most recommended career and money books for kids?
+- [Animal & Pet Books for Kids](https://kidwb.com/animal-books-kids): What are some beloved animal and pet books for kids?
+- [Sports Books for Kids & Beginning Readers](https://kidwb.com/sports-books-kids): What are some popular sports books for kids?
+- [Folktales, Fables & Storytelling Books for Kids](https://kidwb.com/folktales-fables-kids): What are some award-winning folktales, fables, and classic-style stories for kids?
+- [SEL & Communication Books for Kids (Fiction & Nonfiction)](https://kidwb.com/sel-books-kids): What are the best Social & Emotional Learning books for kids?
+- [Bedtime & Read-Aloud Books](https://kidwb.com/bedtime-books-kids): Calming stories for bedtime. Lively books for group read-aloud.
+- [Bedtime & Read-Aloud Books](https://kidwb.com/read-aloud-books-kids): Calming stories for bedtime. Lively books for group read-aloud.
+- [Christian Children's Books](https://kidwb.com/christian-childrens-books): Award-winning stories that nurture gratitude, courage, compassion, and wonder—without preaching.
+- [What are the best history and biography books for kids (real stories in diverse cultures)?](https://kidwb.com/history-culture-books-kids): True stories, immigrant journeys, and cross-cultural adventures for ages 4–15
+- [Books Like Classic Children's Favorites](https://kidwb.com/books-like-kids-classics): 50+ cross-cultural stories for ages 2–16 — loved by families who grew up on Berenstain Bears, Frog and Toad, and Little House.
