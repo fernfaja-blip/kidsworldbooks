@@ -1,5 +1,6 @@
 export interface SheetSubmissionPayload {
-  formType: 'Contacto (/contact-us)' | 'Suscripción Guías (/)';
+  sheetName: 'Contact Us' | 'Get Guides';
+  formType: 'Contact Us (/contact-us)' | 'Get Guides (/)';
   fullName: string;
   email: string;
   organization: string;
@@ -7,8 +8,7 @@ export interface SheetSubmissionPayload {
   message: string;
 }
 
-// Reemplaza esta constante (o define VITE_GOOGLE_SHEETS_WEBHOOK_URL en Netlify)
-// con la URL Web App de Apps Script generada en el Google Sheet:
+// URL Web App de Apps Script generada en el Google Sheet:
 // https://docs.google.com/spreadsheets/d/1ox86V5b2NBnI_wX2mdPKYdeL1g0KY-BAB5PcT-dDsV8/edit
 export const GOOGLE_SHEETS_WEBHOOK_URL =
   ((import.meta as unknown as { env?: Record<string, string> }).env?.VITE_GOOGLE_SHEETS_WEBHOOK_URL) ||
@@ -21,7 +21,7 @@ export async function submitToGoogleSheet(payload: SheetSubmissionPayload): Prom
     ...payload,
   };
 
-  // 1. Si está configurada la URL Web App de Google Sheets, envía la fila a Google Drive
+  // 1. Envía la fila a la pestaña correspondiente (Contact Us o Get Guides) en Google Drive
   if (GOOGLE_SHEETS_WEBHOOK_URL) {
     try {
       await fetch(GOOGLE_SHEETS_WEBHOOK_URL, {
@@ -37,7 +37,7 @@ export async function submitToGoogleSheet(payload: SheetSubmissionPayload): Prom
     }
   }
 
-  // 2. Respaldo simultáneo en Netlify Forms (si el sitio corre en Netlify)
+  // 2. Respaldo simultáneo en Netlify Forms
   try {
     const formData = new URLSearchParams();
     formData.append('form-name', 'kidsworldbooks-leads');

@@ -36,12 +36,13 @@ export const HomePage: React.FC<HomePageProps> = ({ onSelectBook }) => {
     e.preventDefault();
     if (email.trim()) {
       await submitToGoogleSheet({
-        formType: 'Suscripción Guías (/)',
+        sheetName: 'Get Guides',
+        formType: 'Get Guides (/)',
         fullName: '-',
         email: email.trim(),
         organization: '-',
         topic: 'Free STEM + Literacy Lesson Plans for K–10',
-        message: 'Subscribed from Home Page lead block',
+        message: 'Home Page (Get Guides)',
       });
       setSubscribed(true);
     }

@@ -16,7 +16,8 @@ export const ContactPage: React.FC = () => {
     e.preventDefault();
     setSubmitting(true);
     await submitToGoogleSheet({
-      formType: 'Contacto (/contact-us)',
+      sheetName: 'Contact Us',
+      formType: 'Contact Us (/contact-us)',
       fullName,
       email,
       organization,
