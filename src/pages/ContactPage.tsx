@@ -1,21 +1,50 @@
 import React, { useState } from 'react';
 import { Breadcrumbs } from '../components/Breadcrumbs';
-import { Mail, MapPin, Building2, Send, CheckCircle2, Award, Globe } from 'lucide-react';
-import { submitToGoogleSheet } from '../utils/submitToGoogleSheet';
+import {
+  Mail,
+  MapPin,
+  Building2,
+  Send,
+  CheckCircle2,
+  Award,
+  Globe,
+  AlertCircle,
+  ShieldCheck,
+} from 'lucide-react';
+import {
+  submitToGoogleSheet,
+  MAX_MESSAGE_LENGTH,
+  containsCodeOrHtml,
+} from '../utils/submitToGoogleSheet';
 
 export const ContactPage: React.FC = () => {
   const [submitted, setSubmitted] = useState(false);
   const [submitting, setSubmitting] = useState(false);
+  const [errorMsg, setErrorMsg] = useState<string | null>(null);
   const [fullName, setFullName] = useState('');
   const [email, setEmail] = useState('');
   const [organization, setOrganization] = useState('');
   const [topic, setTopic] = useState('Send Me Free K–10 STEM + Literacy Lesson Plans');
   const [message, setMessage] = useState('');
+  const [honeypot, setHoneypot] = useState('');
+
+  const handleMessageChange = (val: string) => {
+    setErrorMsg(null);
+    const sliced = val.slice(0, MAX_MESSAGE_LENGTH);
+    setMessage(sliced);
+    if (containsCodeOrHtml(sliced)) {
+      setErrorMsg(
+        'Only plain text is allowed. HTML tags (< >), scripts, or code snippets are not permitted.'
+      );
+    }
+  };
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
+    setErrorMsg(null);
     setSubmitting(true);
-    await submitToGoogleSheet({
+
+    const result = await submitToGoogleSheet({
       sheetName: 'Contact Us',
       formType: 'Contact Us (/contact-us)',
       fullName,
@@ -23,8 +52,14 @@ export const ContactPage: React.FC = () => {
       organization,
       topic,
       message,
+      honeypot,
     });
+
     setSubmitting(false);
+    if (!result.ok) {
+      setErrorMsg(result.error || 'Unable to submit form. Please verify your entries.');
+      return;
+    }
     setSubmitted(true);
   };
 
@@ -48,43 +83,80 @@ export const ContactPage: React.FC = () => {
           Contact Us & Sign Up for Free K–10 STEM + Literacy Lesson Plans
         </h1>
         <p className="text-base text-[#475569] max-w-3xl leading-relaxed">
-          Request your free K–10 STEM + Literacy starter lesson plans, inquire about school purchase orders (POs), bulk discounts, or book an in-person/virtual author visit with Karl Beckstrand.
+          Request your free K–10 STEM + Literacy starter lesson plans, inquire about school purchase
+          orders (POs), bulk discounts, or book an in-person/virtual author visit with Karl
+          Beckstrand.
         </p>
       </div>
 
       <div className="grid grid-cols-1 lg:grid-cols-12 gap-8">
-        
         {/* Contact & Sign-Up Form */}
         <div className="lg:col-span-7 bg-white p-8 rounded-2xl border border-[#E2D9CE] space-y-6">
           {submitted ? (
             <div className="bg-[#FAF7F2] border border-[#0F4C3A] p-6 rounded-xl space-y-3 text-center">
               <CheckCircle2 className="w-8 h-8 text-[#0F4C3A] mx-auto" />
-              <h3 className="font-editorial text-xl font-bold text-[#0F2238]">Thank You for Contacting KidsWorldBooks!</h3>
+              <h3 className="font-editorial text-xl font-bold text-[#0F2238]">
+                Thank You for Contacting KidsWorldBooks!
+              </h3>
               <p className="text-xs text-[#64748B]">
-                Your request has been received. You can also email us directly at <strong>info@premiopublishing.com</strong> for immediate assistance.
+                Your request has been received. You can also email us directly at{' '}
+                <strong>info@premiopublishing.com</strong> for immediate assistance.
               </p>
             </div>
           ) : (
             <form onSubmit={handleSubmit} className="space-y-4">
+              {/* Honeypot anti-bot field (hidden from real users) */}
+              <div className="hidden" aria-hidden="true">
+                <label>
+                  Leave this field blank
+                  <input
+                    type="text"
+                    tabIndex={-1}
+                    autoComplete="off"
+                    value={honeypot}
+                    onChange={(e) => setHoneypot(e.target.value)}
+                  />
+                </label>
+              </div>
+
+              {errorMsg && (
+                <div className="bg-red-50 border border-red-200 text-red-800 px-4 py-3 rounded-xl text-xs flex items-start gap-2.5">
+                  <AlertCircle className="w-4 h-4 text-red-600 shrink-0 mt-0.5" />
+                  <span>{errorMsg}</span>
+                </div>
+              )}
+
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                 <div>
-                  <label className="block text-xs font-bold text-[#0F2238] mb-1">Your Full Name *</label>
+                  <label className="block text-xs font-bold text-[#0F2238] mb-1">
+                    Your Full Name *
+                  </label>
                   <input
                     type="text"
                     required
+                    maxLength={100}
                     value={fullName}
-                    onChange={(e) => setFullName(e.target.value)}
+                    onChange={(e) => {
+                      setErrorMsg(null);
+                      setFullName(e.target.value);
+                    }}
                     placeholder="e.g., Sarah Miller"
                     className="w-full bg-[#FAF7F2] border border-[#E2D9CE] rounded-lg p-2.5 text-xs text-[#0F2238]"
                   />
                 </div>
                 <div>
-                  <label className="block text-xs font-bold text-[#0F2238] mb-1">Email Address *</label>
+                  <label className="block text-xs font-bold text-[#0F2238] mb-1">
+                    Email Address *
+                  </label>
                   <input
                     type="email"
                     required
+                    maxLength={120}
                     value={email}
-                    onChange={(e) => setEmail(e.target.value)}
+                    onChange={(e) => {
+                      setErrorMsg(null);
+                      setEmail(e.target.value);
+                    }}
                     placeholder="e.g., smiller@district.edu"
                     className="w-full bg-[#FAF7F2] border border-[#E2D9CE] rounded-lg p-2.5 text-xs text-[#0F2238]"
                   />
@@ -93,17 +165,25 @@ export const ContactPage: React.FC = () => {
 
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                 <div>
-                  <label className="block text-xs font-bold text-[#0F2238] mb-1">School / Library / Organization</label>
+                  <label className="block text-xs font-bold text-[#0F2238] mb-1">
+                    School / Library / Organization
+                  </label>
                   <input
                     type="text"
+                    maxLength={120}
                     value={organization}
-                    onChange={(e) => setOrganization(e.target.value)}
+                    onChange={(e) => {
+                      setErrorMsg(null);
+                      setOrganization(e.target.value);
+                    }}
                     placeholder="e.g., Washington Elementary"
                     className="w-full bg-[#FAF7F2] border border-[#E2D9CE] rounded-lg p-2.5 text-xs text-[#0F2238]"
                   />
                 </div>
                 <div>
-                  <label className="block text-xs font-bold text-[#0F2238] mb-1">Inquiry Topic</label>
+                  <label className="block text-xs font-bold text-[#0F2238] mb-1">
+                    Inquiry Topic
+                  </label>
                   <select
                     value={topic}
                     onChange={(e) => setTopic(e.target.value)}
@@ -120,15 +200,35 @@ export const ContactPage: React.FC = () => {
               </div>
 
               <div>
-                <label className="block text-xs font-bold text-[#0F2238] mb-1">Message or Book Title Requested *</label>
+                <div className="flex items-center justify-between mb-1">
+                  <label className="block text-xs font-bold text-[#0F2238]">
+                    Message or Book Title Requested *
+                  </label>
+                  <span
+                    className={`text-[11px] font-medium ${
+                      message.length >= MAX_MESSAGE_LENGTH ? 'text-[#C2410C] font-bold' : 'text-[#64748B]'
+                    }`}
+                  >
+                    {message.length} / {MAX_MESSAGE_LENGTH} chars (plain text only)
+                  </span>
+                </div>
                 <textarea
                   rows={4}
                   required
+                  maxLength={MAX_MESSAGE_LENGTH}
                   value={message}
-                  onChange={(e) => setMessage(e.target.value)}
-                  placeholder="Let us know which grade levels you teach, or which free lesson plan/ebook you'd like!"
+                  onChange={(e) => handleMessageChange(e.target.value)}
+                  placeholder="Let us know which grade levels you teach, or which free lesson plan/ebook you'd like! (Plain text only, max 500 characters)"
                   className="w-full bg-[#FAF7F2] border border-[#E2D9CE] rounded-lg p-2.5 text-xs text-[#0F2238]"
                 ></textarea>
+              </div>
+
+              <div className="flex items-center gap-2 text-[11px] text-[#64748B]">
+                <ShieldCheck className="w-3.5 h-3.5 text-[#0F4C3A] shrink-0" />
+                <span>
+                  Protected form: plain text only, max {MAX_MESSAGE_LENGTH} chars, up to 3 requests
+                  per email/day (2-hour interval).
+                </span>
               </div>
 
               <button
@@ -152,7 +252,13 @@ export const ContactPage: React.FC = () => {
               <MapPin className="w-4 h-4 text-[#C2410C] shrink-0 mt-0.5" />
               <div>
                 <strong className="text-[#0F2238] block">Mailing Address & Direct Email:</strong>
-                <span>Premio Publishing & Gozo Books (KidsWorldBooks.com)<br />PO Box 64, Hurricane UT 84737 USA<br />Email: info@premiopublishing.com</span>
+                <span>
+                  Premio Publishing & Gozo Books (KidsWorldBooks.com)
+                  <br />
+                  PO Box 64, Hurricane UT 84737 USA
+                  <br />
+                  Email: info@premiopublishing.com
+                </span>
               </div>
             </div>
 
@@ -160,7 +266,10 @@ export const ContactPage: React.FC = () => {
               <Award className="w-4 h-4 text-[#0F4C3A] shrink-0 mt-0.5" />
               <div>
                 <strong className="text-[#0F2238] block">Institutional Selections:</strong>
-                <span>Selected by the State of Vermont, USDA (via Virginia Tech), Library of Congress, Georgia Farm Bureau, and Alberta Health Services.</span>
+                <span>
+                  Selected by the State of Vermont, USDA (via Virginia Tech), Library of Congress,
+                  Georgia Farm Bureau, and Alberta Health Services.
+                </span>
               </div>
             </div>
 
@@ -168,12 +277,14 @@ export const ContactPage: React.FC = () => {
               <Building2 className="w-4 h-4 text-[#0F4C3A] shrink-0 mt-0.5" />
               <div>
                 <strong className="text-[#0F2238] block">Wholesale & Library Distributors:</strong>
-                <span>Ingram Content Group, Follett School Solutions, Brodart, Mackin, Baker & Taylor, Amazon, Barnes & Noble, Target, and Walmart.</span>
+                <span>
+                  Ingram Content Group, Follett School Solutions, Brodart, Mackin, Baker & Taylor,
+                  Amazon, Barnes & Noble, Target, and Walmart.
+                </span>
               </div>
             </div>
           </div>
         </div>
-
       </div>
     </div>
   );

@@ -15,6 +15,8 @@ interface HomePageProps {
 export const HomePage: React.FC<HomePageProps> = ({ onSelectBook }) => {
   const [email, setEmail] = useState('');
   const [subscribed, setSubscribed] = useState(false);
+  const [guideError, setGuideError] = useState<string | null>(null);
+  const [honeypot, setHoneypot] = useState('');
 
   const featuredSlugs = [
     'she-doesnt-want-the-worms-ella-no-quiere-los-gusanos',
@@ -34,8 +36,9 @@ export const HomePage: React.FC<HomePageProps> = ({ onSelectBook }) => {
 
   const handleGuideSignup = async (e: React.FormEvent) => {
     e.preventDefault();
+    setGuideError(null);
     if (email.trim()) {
-      await submitToGoogleSheet({
+      const result = await submitToGoogleSheet({
         sheetName: 'Get Guides',
         formType: 'Get Guides (/)',
         fullName: '-',
@@ -43,7 +46,12 @@ export const HomePage: React.FC<HomePageProps> = ({ onSelectBook }) => {
         organization: '-',
         topic: 'Free STEM + Literacy Lesson Plans for K–10',
         message: 'Home Page (Get Guides)',
+        honeypot,
       });
+      if (!result.ok) {
+        setGuideError(result.error || 'Unable to submit request.');
+        return;
+      }
       setSubscribed(true);
     }
   };
@@ -156,25 +164,45 @@ export const HomePage: React.FC<HomePageProps> = ({ onSelectBook }) => {
                 <Link to="/teaching-guides" className="underline ml-1">Open Guides →</Link>
               </div>
             ) : (
-              <form onSubmit={handleGuideSignup} className="flex flex-col sm:flex-row gap-2.5 w-full lg:w-96">
-                <div className="relative flex-1">
-                  <Mail className="w-4 h-4 text-[#64748B] absolute left-3.5 top-3" />
-                  <input
-                    type="email"
-                    required
-                    value={email}
-                    onChange={(e) => setEmail(e.target.value)}
-                    placeholder="Enter email for free K–10 guides..."
-                    className="w-full bg-[#FAF7F2] border border-[#E2D9CE] rounded-xl py-2.5 pl-10 pr-3 text-xs text-[#0F2238] focus:outline-none focus:ring-2 focus:ring-[#0F2238]"
-                  />
-                </div>
-                <button
-                  type="submit"
-                  className="bg-[#0F4C3A] hover:bg-[#0F2238] text-white font-bold text-xs px-5 py-2.5 rounded-xl transition-colors whitespace-nowrap"
-                >
-                  GET GUIDES
-                </button>
-              </form>
+              <div className="space-y-2 w-full lg:w-96">
+                <form onSubmit={handleGuideSignup} className="flex flex-col sm:flex-row gap-2.5 w-full">
+                  <div className="hidden" aria-hidden="true">
+                    <input
+                      type="text"
+                      tabIndex={-1}
+                      autoComplete="off"
+                      value={honeypot}
+                      onChange={(e) => setHoneypot(e.target.value)}
+                    />
+                  </div>
+                  <div className="relative flex-1">
+                    <Mail className="w-4 h-4 text-[#64748B] absolute left-3.5 top-3" />
+                    <input
+                      type="email"
+                      required
+                      maxLength={120}
+                      value={email}
+                      onChange={(e) => {
+                        setGuideError(null);
+                        setEmail(e.target.value);
+                      }}
+                      placeholder="Enter email for free K–10 guides..."
+                      className="w-full bg-[#FAF7F2] border border-[#E2D9CE] rounded-xl py-2.5 pl-10 pr-3 text-xs text-[#0F2238] focus:outline-none focus:ring-2 focus:ring-[#0F2238]"
+                    />
+                  </div>
+                  <button
+                    type="submit"
+                    className="bg-[#0F4C3A] hover:bg-[#0F2238] text-white font-bold text-xs px-5 py-2.5 rounded-xl transition-colors whitespace-nowrap"
+                  >
+                    GET GUIDES
+                  </button>
+                </form>
+                {guideError && (
+                  <p className="text-[11px] text-red-700 bg-red-50 border border-red-200 rounded-lg px-3 py-1.5">
+                    {guideError}
+                  </p>
+                )}
+              </div>
             )}
           </div>
         </div>
