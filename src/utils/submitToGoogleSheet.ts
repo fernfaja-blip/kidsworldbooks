@@ -16,6 +16,10 @@ export const GOOGLE_SHEETS_WEBHOOK_URL =
 
 export async function submitToGoogleSheet(payload: SheetSubmissionPayload): Promise<void> {
   const timestamp = new Date().toISOString();
+  const data = {
+    timestamp,
+    ...payload,
+  };
 
   const formParams = new URLSearchParams();
   formParams.append('timestamp', timestamp);
@@ -28,15 +32,16 @@ export async function submitToGoogleSheet(payload: SheetSubmissionPayload): Prom
   formParams.append('message', payload.message);
 
   // 1. Envía la fila a la pestaña correspondiente (Contact Us o Get Guides) en Google Drive
+  // Enviamos JSON en el body (para JSON.parse(e.postData.contents)) y query params en la URL (para e.parameter)
   if (GOOGLE_SHEETS_WEBHOOK_URL) {
     try {
       await fetch(`${GOOGLE_SHEETS_WEBHOOK_URL}?${formParams.toString()}`, {
         method: 'POST',
         mode: 'no-cors',
         headers: {
-          'Content-Type': 'application/x-www-form-urlencoded',
+          'Content-Type': 'text/plain;charset=utf-8',
         },
-        body: formParams.toString(),
+        body: JSON.stringify(data),
       });
     } catch (err) {
       console.error('Error sending to Google Sheet:', err);
